@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="c34hVK" name="GUI" projectType="guiapp" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+  <MAINGROUP id="ZlYpAG" name="GUI">
+    <GROUP id="{56A5B10E-79E4-4720-9347-163C73690171}" name="Source">
+      <FILE id="hgKi9j" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="BhC0ST" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="r9LLNi" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+  <EXPORTFORMATS>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="GUI"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="GUI"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../juce-8.0.1-windows/JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2022>
+  </EXPORTFORMATS>
+</JUCERPROJECT>
