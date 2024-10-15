@@ -9,6 +9,9 @@ This will be application based, where it can be used on Windows or Android (Wind
 - Dynamic Range Compression and Expansion
 - Equalizer
 
+### To-do Currently
+- Main UI
+- Equalizer UI
 
 ## Initial start
 - To start, you must have Visual Code 2022, as it is the current only project file Projuicer from JUCE can make.
@@ -19,3 +22,4 @@ This will be application based, where it can be used on Windows or Android (Wind
 
 ## Expected knowledge to be used
 - Every single thing in the JUCE tutorial section, so good luck y'all.
+- Currently need Graphics tutorial for current to-do
