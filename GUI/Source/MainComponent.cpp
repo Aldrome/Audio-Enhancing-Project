@@ -6,7 +6,7 @@ MainComponent::MainComponent()
 {
     setSize(600, 600);
 
-    const int numberOfButtons = 3; // Number of buttons you want
+    const int numberOfButtons = 3; // Buttons
     const int numberOfEQslider = 10; // Equalizer
 
     // Initialize states

@@ -4,6 +4,11 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
   <MAINGROUP id="ZlYpAG" name="GUI">
     <GROUP id="{56A5B10E-79E4-4720-9347-163C73690171}" name="Source">
+      <FILE id="jcBxes" name="Equalizer.cpp" compile="1" resource="0" file="Source/Equalizer.cpp"/>
+      <FILE id="lRlxP4" name="Equalizer.h" compile="0" resource="0" file="Source/Equalizer.h"/>
+      <FILE id="KWpGtz" name="ToggleSlider.cpp" compile="1" resource="0"
+            file="Source/ToggleSlider.cpp"/>
+      <FILE id="HwJ54X" name="ToggleSlider.h" compile="0" resource="0" file="Source/ToggleSlider.h"/>
       <FILE id="hgKi9j" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="BhC0ST" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="r9LLNi" name="MainComponent.cpp" compile="1" resource="0"

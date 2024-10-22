@@ -2,7 +2,9 @@
 
 #include <JuceHeader.h>
 #include <vector>
-#include <memory> // Include for smart pointers
+#include <memory>
+
+#include "ToggleSlider.h"
 
 //==============================================================================
 class MainComponent : public juce::Component
@@ -26,6 +28,8 @@ private:
 
     // Vector to hold multiple vertical sliders using unique_ptr
     std::vector<std::unique_ptr<juce::Slider>> verticalSliders;
+
+    std::unique_ptr<ToggleSlider> animatedButton;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };
