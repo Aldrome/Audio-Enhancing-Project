@@ -1,7 +1,7 @@
 GUI/Builds/VisualStudio2022/x64/
 
 # JUCE and Projucer ignore rules
-Builds/
+GUI/Builds/VisualStudio2022/
 
 # Visual Studio files
 .vs/
