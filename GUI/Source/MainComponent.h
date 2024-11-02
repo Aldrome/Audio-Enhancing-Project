@@ -4,9 +4,10 @@
 #include <vector>
 #include <memory>
 
-#include "ToggleSlider.h"
+#include "Equalizer.h"
 
 //==============================================================================
+// MainComponent class definition
 class MainComponent : public juce::Component
 {
 public:
@@ -26,10 +27,8 @@ private:
     // Button click handler
     void toggleButtonClicked(int buttonIndex);
 
-    // Vector to hold multiple vertical sliders using unique_ptr
-    std::vector<std::unique_ptr<juce::Slider>> verticalSliders;
-
-    std::unique_ptr<ToggleSlider> animatedButton;
+    // Unique pointer for the Equalizer component
+    std::unique_ptr<Equalizer> equalizer;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };
