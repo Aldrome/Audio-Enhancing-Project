@@ -19,3 +19,4 @@ GUI/Builds/VisualStudio2022/
 !*.jucer
 !Source/
 
+/GUI/Builds/VisualStudio2022/.vs
