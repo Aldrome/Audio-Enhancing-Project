@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Equalizer.h"
+#include "Recorder.h"
 
 //==============================================================================
 // MainComponent class definition
@@ -16,6 +17,7 @@ public:
 
     void paint(juce::Graphics&) override;
     void resized() override;
+
 
 private:
     // Vector to hold multiple toggle buttons using unique_ptr
@@ -29,6 +31,10 @@ private:
 
     // Unique pointer for the Equalizer component
     std::unique_ptr<Equalizer> equalizer;
+
+    std::unique_ptr<Recorder> recorder;
+    juce::TextButton startRecordingButton{ "Start Recording" };
+    juce::TextButton stopRecordingButton{ "Stop Recording" };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

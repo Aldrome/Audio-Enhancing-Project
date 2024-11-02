@@ -6,6 +6,15 @@ MainComponent::MainComponent()
 {
     setSize(600, 600);
 
+    addAndMakeVisible(startRecordingButton);
+    startRecordingButton.onClick = [this]() { recorder->startRecordingToDefaultFile(); };
+
+    addAndMakeVisible(stopRecordingButton);
+    stopRecordingButton.onClick = [this]() { recorder->stopRecording(); };
+
+    recorder = std::make_unique<Recorder>();
+
+
     const int numberOfButtons = 3;  // Number of buttons
 
     // Initialize states for buttons
@@ -31,7 +40,9 @@ MainComponent::MainComponent()
 
 MainComponent::~MainComponent()
 {
-    // No need to explicitly delete equalizer, unique_ptr handles it.
+    if (recorder->isRecording()) {
+        recorder->stopRecording();
+    }
 }
 
 //==============================================================================
@@ -64,6 +75,10 @@ void MainComponent::resized()
     {
         equalizer->setBounds(20, 250, getWidth() - 40, 300);  // Position the equalizer below the buttons
     }
+
+    // Layout for buttons
+    startRecordingButton.setBounds(10, 10, 120, 30);
+    stopRecordingButton.setBounds(140, 10, 120, 30);
 }
 
 //==============================================================================
