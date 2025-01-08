@@ -14,12 +14,15 @@ This will be application based, where it can be used on Windows or Android (Wind
 - Equalizer UI
 
 ## Initial start
-- To start, you must have Visual Code 2022, as it is the current only project file Projuicer from JUCE can make.
+- To start, you must have Visual Code 2022 and JUCE, as it is the current only project file Projuicer from JUCE can make.
 - You need the **Desktop Development with C++** workload to start coding.
 - For tutorials, check out *https://juce.com/learn/tutorials/*.
 - For Libraries, check out *https://docs.juce.com/master/index.html*
 - The project file is located at ***".../GUI/Builds/VisualStudio2022/GUI.sln"***.
 - **NOTE**: To be able to commit, do not include any files in ***".../GUI/Builds/VisualStudio2022/.vs/..."*** and ***".../GUI/Builds/VisualStudio2022/x64/..."***, as it is the resulting application after compiling. (Already dealt with gitignore.)
+
+## Initial Export bug
+Due to the method of making the project, where it requires file path, try exporting in projucer first before starting.
 
 ## Expected knowledge to be used
 - Every single thing in the JUCE tutorial section, so good luck y'all.
