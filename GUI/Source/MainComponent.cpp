@@ -10,15 +10,21 @@ MainComponent::MainComponent()
 
     // Initialize states for buttons
     isOnStates.resize(numberOfButtons, false);  // Initialize all states to OFF (false)
+    audioRecorder = std::make_unique<AudioRecorder>();
 
     // Create the buttons
     for (int i = 0; i < numberOfButtons; ++i)
     {
         auto button = std::make_unique<juce::TextButton>();
         button->setButtonText("OFF");  // Initial state
-        button->onClick = [this, i] { toggleButtonClicked(i); };  // Capture the button index
-        addAndMakeVisible(button.get());
 
+        // Capture 'this' and 'i' properly
+        button->onClick = [this, i]() {
+            DBG("Button " + std::to_string(i) + " clicked"); // Debugging output to confirm the button click
+            toggleButtonClicked(i);
+            };
+
+        addAndMakeVisible(button.get());
         toggleButtons.push_back(std::move(button));
     }
 
@@ -72,7 +78,24 @@ void MainComponent::toggleButtonClicked(int buttonIndex)
 {
     if (buttonIndex >= 0 && buttonIndex < isOnStates.size()) // Check for valid index
     {
+        DBG("Toggling button " + std::to_string(buttonIndex)); // Debugging output
+
         isOnStates[buttonIndex] = !isOnStates[buttonIndex];  // Toggle the state
+
+        // If this is the button that controls audio recording, start/stop recording
+        if (buttonIndex == 2)  // Assuming buttonIndex 2 controls recording
+        {
+            if (isOnStates[buttonIndex])
+            {
+                audioRecorder->prepareToPlay(512, 44100.0);  // Call necessary methods
+                DBG("Recording started");
+            }
+            else
+            {
+                audioRecorder->releaseResources();
+                DBG("Recording stopped");
+            }
+        }
 
         // Update button text based on the state
         if (isOnStates[buttonIndex])

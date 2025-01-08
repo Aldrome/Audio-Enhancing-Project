@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Equalizer.h"
+#include "AudioRecorder.h"
 
 //==============================================================================
 // MainComponent class definition
@@ -29,6 +30,9 @@ private:
 
     // Unique pointer for the Equalizer component
     std::unique_ptr<Equalizer> equalizer;
+
+    // Audio recorder
+    std::unique_ptr<AudioRecorder> audioRecorder;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

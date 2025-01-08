@@ -4,18 +4,26 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
   <MAINGROUP id="ZlYpAG" name="GUI">
     <GROUP id="{56A5B10E-79E4-4720-9347-163C73690171}" name="Source">
+      <FILE id="hgKi9j" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="BhC0ST" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="r9LLNi" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
       <FILE id="jcBxes" name="Equalizer.cpp" compile="1" resource="0" file="Source/Equalizer.cpp"/>
       <FILE id="lRlxP4" name="Equalizer.h" compile="0" resource="0" file="Source/Equalizer.h"/>
       <FILE id="KWpGtz" name="ToggleSlider.cpp" compile="1" resource="0"
             file="Source/ToggleSlider.cpp"/>
       <FILE id="HwJ54X" name="ToggleSlider.h" compile="0" resource="0" file="Source/ToggleSlider.h"/>
-      <FILE id="hgKi9j" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-      <FILE id="BhC0ST" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="r9LLNi" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
+      <FILE id="SQBSui" name="AudioRecorder.cpp" compile="1" resource="0"
+            file="Source/AudioRecorder.cpp"/>
+      <FILE id="pHFJAm" name="AudioRecorder.h" compile="0" resource="0" file="Source/AudioRecorder.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -37,6 +45,11 @@
         <MODULEPATH id="juce_graphics" path="../juce-8.0.1-windows/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../juce-8.0.1-windows/JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce-8.0.1-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce-8.0.1-windows/JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
   </EXPORTFORMATS>
