@@ -10,11 +10,12 @@ This will be application based, where it can be used on Windows or Android (Wind
 - Equalizer
 
 ### To-do Currently
-- Main UI
-- Equalizer UI
+- I have created 3 branches. They tell you what it should contain, so create from there.
 
 ## Initial start
 - To start, you must have Visual Code 2022 and JUCE, as it is the current only project file Projuicer from JUCE can make.
+- https://juce.com/get-juce/
+- https://visualstudio.microsoft.com/vs/
 - You need the **Desktop Development with C++** workload to start coding.
 - For tutorials, check out *https://juce.com/learn/tutorials/*.
 - For Libraries, check out *https://docs.juce.com/master/index.html*
