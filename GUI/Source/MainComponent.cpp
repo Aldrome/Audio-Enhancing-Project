@@ -6,11 +6,20 @@ MainComponent::MainComponent()
 {
     setSize(600, 600);
 
+    // Initialize the slider
+    volumeSlider.setSliderStyle(juce::Slider::LinearHorizontal);
+    volumeSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 100, 20);
+    volumeSlider.setRange(0.0, 1.0, 0.01);  // Volume range from 0 to 1
+    volumeSlider.setValue(0.5);             // Default value
+    addAndMakeVisible(volumeSlider);
+
+    // Pass volumeSlider to the AudioRecorder
+    audioRecorder = std::make_unique<AudioRecorder>(volumeSlider);
+
     const int numberOfButtons = 3;  // Number of buttons
 
     // Initialize states for buttons
     isOnStates.resize(numberOfButtons, false);  // Initialize all states to OFF (false)
-    audioRecorder = std::make_unique<AudioRecorder>();
 
     // Create the buttons
     for (int i = 0; i < numberOfButtons; ++i)
@@ -58,18 +67,43 @@ void MainComponent::resized()
     const int buttonWidth = 100;
     const int buttonHeight = 50;
     const int buttonSpacing = 20;
+    const int buttonAreaTop = 150; // Start position for the buttons
+    const int buttonAreaBottomPadding = 30; // Space below the buttons for the equalizer
 
-    // Layout the buttons
+    // Layout the volume slider at the top
+    volumeSlider.setBounds(
+        20,
+        70,
+        getWidth() - 40,
+        40
+    );
+
+    // Layout the buttons below the slider
     for (size_t i = 0; i < toggleButtons.size(); ++i)
     {
-        toggleButtons[i]->setBounds(20, 80 + (buttonHeight + buttonSpacing) * i, buttonWidth, buttonHeight);
+        toggleButtons[i]->setBounds(
+            20,
+            buttonAreaTop + (buttonHeight + buttonSpacing) * i,
+            buttonWidth,
+            buttonHeight
+        );
     }
 
+    // Calculate the area occupied by the buttons
+    const int totalButtonHeight = (buttonHeight + buttonSpacing) * toggleButtons.size();
+    const int equalizerTop = buttonAreaTop + totalButtonHeight + buttonAreaBottomPadding;
+
     // Set the bounds for the equalizer component
-    if (equalizer)  // Ensure equalizer is valid
+    if (equalizer) // Ensure the equalizer is valid
     {
-        equalizer->setBounds(20, 250, getWidth() - 40, 300);  // Position the equalizer below the buttons
+        equalizer->setBounds(
+            20,
+            equalizerTop,
+            getWidth() - 40,
+            getHeight() - equalizerTop - 40
+        );
     }
+
 }
 
 //==============================================================================

@@ -34,5 +34,8 @@ private:
     // Audio recorder
     std::unique_ptr<AudioRecorder> audioRecorder;
 
+    // Volume slider
+    juce::Slider volumeSlider;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

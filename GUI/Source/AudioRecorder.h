@@ -11,7 +11,7 @@ class AudioRecorder : public juce::AudioAppComponent
 {
 public:
     //==============================================================================
-    AudioRecorder();
+    explicit AudioRecorder(juce::Slider& slider);
     ~AudioRecorder() override;
 
     //==============================================================================
@@ -26,6 +26,7 @@ private:
     //==============================================================================
     // Your private member variables go here...
     juce::Random random;
+    juce::Slider& volumeSlider;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioRecorder)
 };

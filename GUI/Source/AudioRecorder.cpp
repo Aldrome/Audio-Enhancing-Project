@@ -1,7 +1,8 @@
 #include "AudioRecorder.h"
 
-AudioRecorder::AudioRecorder()
-    : isRecording(false)  // Initialize the recording flag
+AudioRecorder::AudioRecorder(juce::Slider& slider)
+    : volumeSlider(slider), // Initialize the member reference
+      isRecording(false)  // Initialize the recording flag
 {
     // Some platforms require permissions to open input channels so request that here
     if (juce::RuntimePermissions::isRequired(juce::RuntimePermissions::recordAudio)
@@ -40,6 +41,9 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
         return;
     }
 
+    auto volume = (float) volumeSlider.getValue();
+    auto volumeScale = volume * 2.0f;
+
     // If recording, fill the buffer with noise
     for (auto channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
     {
@@ -47,7 +51,7 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
 
         // Fill the required number of samples with noise between -0.125 and +0.125
         for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
-            buffer[sample] = random.nextFloat() * 0.25f - 0.125f;
+            buffer[sample] = random.nextFloat() * volumeScale - volume;
     }
 }
 
