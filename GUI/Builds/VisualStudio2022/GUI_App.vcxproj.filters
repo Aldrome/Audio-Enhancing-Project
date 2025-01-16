@@ -679,13 +679,16 @@
     <ClCompile Include="..\..\Source\MainComponent.cpp">
       <Filter>GUI\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\AudioRecorder.cpp">
+      <Filter>GUI\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\VolumeSlider.cpp">
+      <Filter>GUI\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Equalizer.cpp">
       <Filter>GUI\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ToggleSlider.cpp">
-      <Filter>GUI\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\AudioRecorder.cpp">
       <Filter>GUI\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
@@ -3444,13 +3447,16 @@
     <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>GUI\Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\AudioRecorder.h">
+      <Filter>GUI\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\VolumeSlider.h">
+      <Filter>GUI\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Equalizer.h">
       <Filter>GUI\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ToggleSlider.h">
-      <Filter>GUI\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\AudioRecorder.h">
       <Filter>GUI\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">

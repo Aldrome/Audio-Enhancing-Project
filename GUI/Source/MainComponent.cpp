@@ -6,15 +6,17 @@ MainComponent::MainComponent()
 {
     setSize(600, 600);
 
-    // Initialize the slider
-    volumeSlider.setSliderStyle(juce::Slider::LinearHorizontal);
-    volumeSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 100, 20);
-    volumeSlider.setRange(0.0, 1.0, 0.01);  // Volume range from 0 to 1
-    volumeSlider.setValue(0.5);             // Default value
-    addAndMakeVisible(volumeSlider);
+    // Initialize unique pointers
+    volumeSlider = std::make_unique<VolumeSlider>();
+    audioRecorder = std::make_unique<AudioRecorder>();
+    equalizer = std::make_unique<Equalizer>();
 
-    // Pass volumeSlider to the AudioRecorder
-    audioRecorder = std::make_unique<AudioRecorder>(volumeSlider);
+    // Set up the volume slider callback
+    volumeSlider->onValueChange = [&](float newVolume) {
+        audioRecorder->setVolume(newVolume);
+    };
+
+    addAndMakeVisible(volumeSlider.get());
 
     const int numberOfButtons = 3;  // Number of buttons
 
@@ -37,17 +39,13 @@ MainComponent::MainComponent()
         toggleButtons.push_back(std::move(button));
     }
 
-    // Create and add the Equalizer
-    equalizer = std::make_unique<Equalizer>();
+    // Add the Equalizer
     addAndMakeVisible(equalizer.get());
 
     resized();  // Call resized to set up positions
 }
 
-MainComponent::~MainComponent()
-{
-    // No need to explicitly delete equalizer, unique_ptr handles it.
-}
+MainComponent::~MainComponent() = default;
 
 //==============================================================================
 // Paint method for drawing the main UI
@@ -64,21 +62,29 @@ void MainComponent::paint(juce::Graphics& g)
 // Resized method for laying out child components
 void MainComponent::resized()
 {
+    // Placement values for ease of access
     const int buttonWidth = 100;
     const int buttonHeight = 50;
     const int buttonSpacing = 20;
     const int buttonAreaTop = 150; // Start position for the buttons
     const int buttonAreaBottomPadding = 30; // Space below the buttons for the equalizer
 
-    // Layout the volume slider at the top
-    volumeSlider.setBounds(
-        20,
-        70,
-        getWidth() - 40,
-        40
-    );
+    // Calculate the area occupied by the buttons
+    const int totalButtonHeight = (buttonHeight + buttonSpacing) * toggleButtons.size();
+    const int equalizerTop = buttonAreaTop + totalButtonHeight + buttonAreaBottomPadding;
 
-    // Layout the buttons below the slider
+    // Volume slider placement
+    if (volumeSlider)
+    {
+        volumeSlider->setBounds(
+            20,
+            70,
+            getWidth() - 40,
+            40
+        );
+    }
+
+    // Buttons placement
     for (size_t i = 0; i < toggleButtons.size(); ++i)
     {
         toggleButtons[i]->setBounds(
@@ -89,12 +95,8 @@ void MainComponent::resized()
         );
     }
 
-    // Calculate the area occupied by the buttons
-    const int totalButtonHeight = (buttonHeight + buttonSpacing) * toggleButtons.size();
-    const int equalizerTop = buttonAreaTop + totalButtonHeight + buttonAreaBottomPadding;
-
-    // Set the bounds for the equalizer component
-    if (equalizer) // Ensure the equalizer is valid
+    // Equalizer placement
+    if (equalizer)
     {
         equalizer->setBounds(
             20,
@@ -103,7 +105,6 @@ void MainComponent::resized()
             getHeight() - equalizerTop - 40
         );
     }
-
 }
 
 //==============================================================================
