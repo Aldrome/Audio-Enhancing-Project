@@ -61,5 +61,6 @@ void AudioRecorder::releaseResources()
 
 void AudioRecorder::setVolume(float newVolume)
 {
-    volume.store(newVolume);
+    float linearGain = juce::Decibels::decibelsToGain(newVolume);
+    volume.store(linearGain);
 }
