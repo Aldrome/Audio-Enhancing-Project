@@ -143,9 +143,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
+    <ClCompile Include="..\..\Source\AudioRecorder.cpp"/>
+    <ClCompile Include="..\..\Source\VolumeSlider.cpp"/>
     <ClCompile Include="..\..\Source\Equalizer.cpp"/>
     <ClCompile Include="..\..\Source\ToggleSlider.cpp"/>
-    <ClCompile Include="..\..\Source\AudioRecorder.cpp"/>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -2734,9 +2735,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
+    <ClInclude Include="..\..\Source\AudioRecorder.h"/>
+    <ClInclude Include="..\..\Source\VolumeSlider.h"/>
     <ClInclude Include="..\..\Source\Equalizer.h"/>
     <ClInclude Include="..\..\Source\ToggleSlider.h"/>
-    <ClInclude Include="..\..\Source\AudioRecorder.h"/>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

@@ -40,6 +40,8 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
         return;
     }
 
+    auto volumeScale = volume.load() *2.0f;
+
     // If recording, fill the buffer with noise
     for (auto channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
     {
@@ -47,7 +49,7 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
 
         // Fill the required number of samples with noise between -0.125 and +0.125
         for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
-            buffer[sample] = random.nextFloat() * 0.25f - 0.125f;
+            buffer[sample] = random.nextFloat() * volumeScale - volume.load();
     }
 }
 
@@ -55,4 +57,10 @@ void AudioRecorder::releaseResources()
 {
     isRecording = false;  // Set the recording flag to false when stopping
     juce::Logger::getCurrentLogger()->writeToLog("Releasing audio resources");
+}
+
+void AudioRecorder::setVolume(float newVolume)
+{
+    float linearGain = juce::Decibels::decibelsToGain(newVolume);
+    volume.store(linearGain);
 }

@@ -6,6 +6,7 @@
 
 #include "Equalizer.h"
 #include "AudioRecorder.h"
+#include "VolumeSlider.h"
 
 //==============================================================================
 // MainComponent class definition
@@ -28,11 +29,14 @@ private:
     // Button click handler
     void toggleButtonClicked(int buttonIndex);
 
-    // Unique pointer for the Equalizer component
-    std::unique_ptr<Equalizer> equalizer;
-
     // Audio recorder
     std::unique_ptr<AudioRecorder> audioRecorder;
+
+    // Volume slider
+    std::unique_ptr<VolumeSlider> volumeSlider;
+
+    // Unique pointer for the Equalizer component
+    std::unique_ptr<Equalizer> equalizer;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

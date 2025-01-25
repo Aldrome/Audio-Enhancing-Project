@@ -22,14 +22,13 @@ Equalizer::Equalizer()
 // Destructor
 Equalizer::~Equalizer() {}
 
-// Paint method for custom graphics (optional)
+// Paint method
 void Equalizer::paint(juce::Graphics& g)
 {
     g.fillAll(juce::Colours::darkgrey);  // Background color for the equalizer section
 }
 
-//==============================================================================
-// Resized method to layout the sliders
+// Resized method
 void Equalizer::resized()
 {
     const int sliderWidth = 40;
