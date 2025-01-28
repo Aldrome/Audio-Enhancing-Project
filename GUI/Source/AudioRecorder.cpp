@@ -31,6 +31,8 @@ void AudioRecorder::prepareToPlay(int samplesPerBlockExpected, double sampleRate
     message << " samplesPerBlockExpected = " << samplesPerBlockExpected << "\n";
     message << " sampleRate = " << sampleRate;
     juce::Logger::getCurrentLogger()->writeToLog(message);
+
+    speechDSP.prepare(sampleRate, samplesPerBlockExpected);
 }
 
 void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)

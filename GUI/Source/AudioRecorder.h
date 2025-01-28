@@ -3,6 +3,8 @@
 #include <JuceHeader.h>
 #include <atomic>
 
+#include "SpeechDSP.h"
+
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
@@ -23,6 +25,7 @@ public:
 
     //==============================================================================
     bool isRecording = false;
+    SpeechDSP speechDSP;
 
 private:
     //==============================================================================

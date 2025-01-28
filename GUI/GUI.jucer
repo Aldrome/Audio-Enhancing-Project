@@ -16,6 +16,8 @@
       <FILE id="dxyytV" name="VolumeSlider.h" compile="0" resource="0" file="Source/VolumeSlider.h"/>
       <FILE id="jcBxes" name="Equalizer.cpp" compile="1" resource="0" file="Source/Equalizer.cpp"/>
       <FILE id="lRlxP4" name="Equalizer.h" compile="0" resource="0" file="Source/Equalizer.h"/>
+      <FILE id="kl6yZP" name="SpeechDSP.cpp" compile="1" resource="0" file="Source/SpeechDSP.cpp"/>
+      <FILE id="Ay7ldc" name="SpeechDSP.h" compile="0" resource="0" file="Source/SpeechDSP.h"/>
       <FILE id="KWpGtz" name="ToggleSlider.cpp" compile="1" resource="0"
             file="Source/ToggleSlider.cpp"/>
       <FILE id="HwJ54X" name="ToggleSlider.h" compile="0" resource="0" file="Source/ToggleSlider.h"/>
