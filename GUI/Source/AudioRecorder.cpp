@@ -3,55 +3,78 @@
 AudioRecorder::AudioRecorder()
     : isRecording(false)  // Initialize the recording flag
 {
-    // Some platforms require permissions to open input channels so request that here
+    // Request microphone permission if required
     if (juce::RuntimePermissions::isRequired(juce::RuntimePermissions::recordAudio)
         && !juce::RuntimePermissions::isGranted(juce::RuntimePermissions::recordAudio))
     {
         juce::RuntimePermissions::request(juce::RuntimePermissions::recordAudio,
-            [&](bool granted) { setAudioChannels(granted ? 2 : 0, 2); });
+            [this](bool granted) {
+                if (granted)
+                    setAudioChannels(1, 2);  // Enable 1 input channel, 2 output channels
+                else
+                    setAudioChannels(0, 2);  // No input, 2 output channels
+            });
     }
     else
     {
-        // Specify the number of input and output channels that we want to open
-        setAudioChannels(2, 2);
+        setAudioChannels(2, 2);  // Enable 2 input channel, 2 output channels
     }
 }
 
 AudioRecorder::~AudioRecorder()
 {
-    // This shuts down the audio device and clears the audio source.
-    shutdownAudio();
+    shutdownAudio();  // Shuts down the audio device and clears the audio source
 }
 
 void AudioRecorder::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
     isRecording = true;  // Set the recording flag to true when starting
-    juce::String message;
-    message << "Preparing to play audio...\n";
-    message << " samplesPerBlockExpected = " << samplesPerBlockExpected << "\n";
-    message << " sampleRate = " << sampleRate;
-    juce::Logger::getCurrentLogger()->writeToLog(message);
-
-    speechDSP.prepare(sampleRate, samplesPerBlockExpected);
+    juce::Logger::getCurrentLogger()->writeToLog("Preparing to play audio...");
+    juce::Logger::getCurrentLogger()->writeToLog("Samples per block: " + juce::String(samplesPerBlockExpected));
+    juce::Logger::getCurrentLogger()->writeToLog("Sample rate: " + juce::String(sampleRate));
 }
 
 void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
-    if (!isRecording) {
+    if (!isRecording)
+    {
         bufferToFill.clearActiveBufferRegion();  // Clear buffer if not recording
         return;
     }
 
-    auto volumeScale = volume.load() *2.0f;
+    auto volumeScale = volume.load();
 
-    // If recording, fill the buffer with noise
+    // Retrieve the current audio device and active input channels
+    auto* currentDevice = deviceManager.getCurrentAudioDevice();
+    if (currentDevice == nullptr)
+    {
+        bufferToFill.clearActiveBufferRegion();
+        return;
+    }
+
+    auto activeInputChannels = currentDevice->getActiveInputChannels();
+    auto activeOutputChannels = currentDevice->getActiveOutputChannels();
+
+    auto maxInputChannels = activeInputChannels.countNumberOfSetBits();
+    auto maxOutputChannels = activeOutputChannels.countNumberOfSetBits();
+
+    // Process the audio buffer
     for (auto channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
     {
+        if (channel >= maxInputChannels || channel >= maxOutputChannels)
+        {
+            bufferToFill.buffer->clear(channel, bufferToFill.startSample, bufferToFill.numSamples);
+            continue;
+        }
+
         auto* buffer = bufferToFill.buffer->getWritePointer(channel, bufferToFill.startSample);
 
-        // Fill the required number of samples with noise between -0.125 and +0.125
         for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
-            buffer[sample] = random.nextFloat() * volumeScale - volume.load();
+        {
+            buffer[sample] *= volumeScale;
+        }
+
+        speechDSP.process(*bufferToFill.buffer);
     }
 }
 
