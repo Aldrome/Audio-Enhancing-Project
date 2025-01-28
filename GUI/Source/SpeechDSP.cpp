@@ -29,3 +29,8 @@ void SpeechDSP::process(juce::AudioBuffer<float>& buffer)
         }
     }
 }
+
+void SpeechDSP::setGain(float newGain)
+{
+    gain = newGain;
+}
