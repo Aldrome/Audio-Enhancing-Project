@@ -1,21 +1,18 @@
-#include <JuceHeader.h>
 #include "SpeechDSP.h"
 
-//==============================================================================
-SpeechDSP::SpeechDSP()
+SpeechDSP::SpeechDSP() 
 {
-    
+
 }
 
-SpeechDSP::~SpeechDSP()
+SpeechDSP::~SpeechDSP() 
 {
 
 }
 
 void SpeechDSP::prepare(double sampleRate, int samplesPerBlock)
 {
-    juce::Logger::getCurrentLogger()->writeToLog("DSPProcessor prepared");
-    // Add any initialization here if needed
+    juce::Logger::getCurrentLogger()->writeToLog("SpeechDSP prepared");
 }
 
 void SpeechDSP::process(juce::AudioBuffer<float>& buffer)
@@ -23,14 +20,10 @@ void SpeechDSP::process(juce::AudioBuffer<float>& buffer)
     for (int channel = 0; channel < buffer.getNumChannels(); ++channel)
     {
         auto* channelData = buffer.getWritePointer(channel);
+
         for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
         {
-            channelData[sample] *= 1.0f; // Apply nothing, for now
+            channelData[sample] *= 1.0f;
         }
     }
-}
-
-void SpeechDSP::setGain(float newGain)
-{
-    gain = newGain;
 }

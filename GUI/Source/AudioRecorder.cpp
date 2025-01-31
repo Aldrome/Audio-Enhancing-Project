@@ -42,6 +42,11 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
         return;
     }
 
+    if (bufferToFill.buffer->getNumSamples() > 0)
+    {
+        speechDSP.process(*bufferToFill.buffer);
+    }
+
     auto volumeScale = volume.load();
 
     // Retrieve the current audio device and active input channels
