@@ -1,32 +1,29 @@
 #pragma once
-
 #include <JuceHeader.h>
+#include <vector>
 
-//==============================================================================
-/*
-*/
-class FFTProcess  : public juce::Component
+class FFTProcess
 {
 public:
-    static constexpr int fftSize = 512;  // Adjust as needed
-
-    FFTProcess();
-    ~FFTProcess() override;
-
-    void processFFT(juce::AudioBuffer<float>& buffer);
-
-private:
-    void pushNextSampleIntoFifo(float sample);
-
-    static constexpr int fftOrder = 10; // 2^10 = 1024
+    static constexpr int fftOrder = 10; // 2^10 = 1024-point FFT
     static constexpr int fftSize = 1 << fftOrder;
 
-    juce::dsp::FFT forwardFFT{ fftOrder };
-    juce::dsp::WindowingFunction<float> window{ fftSize, juce::dsp::WindowingFunction<float>::hann };
+    FFTProcess();
+    ~FFTProcess();
 
-    std::array<float, fftSize> fifo = { 0 };
-    std::array<float, fftSize> fftData = { 0 };
-    int fifoIndex = 0;
+    void pushSample(float sample);
+    bool isFFTReady() const;
+    const std::array<float, fftSize / 2>& getFFTData();
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FFTProcess)
+private:
+    void performFFT();
+
+    juce::dsp::FFT fft;
+    juce::dsp::WindowingFunction<float> window;
+
+    std::vector<float> circularBuffer;
+    std::array<float, fftSize / 2> fftBuffer{};
+    int writeIndex = 0;
+    int numSamplesCollected = 0;
+    bool fftReady = false;
 };

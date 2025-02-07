@@ -1,40 +1,58 @@
-#include <JuceHeader.h>
 #include "FFTProcess.h"
 
-//==============================================================================
 FFTProcess::FFTProcess()
+    : fft(fftOrder), window(fftSize, juce::dsp::WindowingFunction<float>::hann),
+    circularBuffer(fftSize, 0.0f) // Initialize buffer with zeros
 {
-    fifoIndex = 0;
-    fftData.fill(0);
+    fftBuffer.fill(0.0f);
 }
 
-FFTProcess::~FFTProcess()
+FFTProcess::~FFTProcess() 
 {
 
 }
 
-void FFTProcess::processFFT(juce::AudioBuffer<float>& buffer)
+void FFTProcess::pushSample(float sample)
 {
-    for (int channel = 0; channel < buffer.getNumChannels(); ++channel)
+    // Store the sample in the circular buffer
+    circularBuffer[writeIndex] = sample;
+    writeIndex = (writeIndex + 1) % fftSize; // Wrap around index
+
+    numSamplesCollected++;
+
+    // Process FFT when enough new samples are collected
+    if (numSamplesCollected >= fftSize)
     {
-        auto* channelData = buffer.getWritePointer(channel);
-
-        for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
-        {
-            pushNextSampleIntoFifo(channelData[sample]);
-        }
+        performFFT();
+        numSamplesCollected = 0; // Reset counter
     }
 }
 
-void FFTProcess::pushNextSampleIntoFifo(float sample)
+void FFTProcess::performFFT()
 {
-    if (fifoIndex == fftSize)
+    // Apply window function and copy data from circular buffer to FFT buffer
+    for (int i = 0; i < fftSize; ++i)
     {
-        std::copy(fifo.begin(), fifo.end(), fftData.begin());
-        window.multiplyWithWindowingTable(fftData.data(), fftSize);
-        forwardFFT.performFrequencyOnlyForwardTransform(fftData.data());
-        fifoIndex = 0;
+        int readIndex = (writeIndex + i) % fftSize;
+        fftBuffer[i] = circularBuffer[readIndex];
     }
 
-    fifo[fifoIndex++] = sample;
+    // Apply window function
+    window.multiplyWithWindowingTable(fftBuffer.data(), fftSize);
+
+    // Perform FFT
+    fft.performFrequencyOnlyForwardTransform(fftBuffer.data());
+
+    fftReady = true;
+}
+
+bool FFTProcess::isFFTReady() const
+{
+    return fftReady;
+}
+
+const std::array<float, FFTProcess::fftSize / 2>& FFTProcess::getFFTData()
+{
+    fftReady = false; // Reset flag after retrieving data
+    return fftBuffer;
 }

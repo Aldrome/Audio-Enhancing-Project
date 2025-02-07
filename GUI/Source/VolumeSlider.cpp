@@ -8,19 +8,19 @@ VolumeSlider::VolumeSlider()
     slider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 100, 20);
 
     // Set the range for decibels
-    slider.setRange(-100.0, 6.0, 0.1);  // dB range: -100 dB to 6 dB, with 0.1 dB steps
-    slider.setValue(-10.0);             // Default value (-10 dB)
+    slider.setRange(-60.0, 10.0, 0.1);  // dB range: -60 dB to 10 dB, with 0.1 dB steps
+    slider.setValue(0.0);               // Default value (0 dB)
 
     // Convert numeric value to decibel string for display
     slider.textFromValueFunction = [](double value) {
-        if (value <= -100.0)
+        if (value <= -60.0)
             return juce::String("-INF");                // Negative infinite for -100 dB
         return juce::Decibels::toString(value); // Convert value to decibels (1 decimal)
         };
 
     // Convert decibel text input to numeric value
     slider.valueFromTextFunction = [](const juce::String& text) {
-        auto minusInfinitydB = -100.0;
+        auto minusInfinitydB = -60.0;
         auto decibelText = text.upToFirstOccurrenceOf("dB", false, false).trim();
         return decibelText.equalsIgnoreCase("-INF") ? minusInfinitydB
             : decibelText.getDoubleValue();
@@ -33,6 +33,7 @@ VolumeSlider::VolumeSlider()
         };
 
     addAndMakeVisible(slider);
+    slider.updateText();
 }
 
 // Destructor
