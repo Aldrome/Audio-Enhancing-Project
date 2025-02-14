@@ -1,4 +1,5 @@
 #pragma once
+
 #include <JuceHeader.h>
 #include <vector>
 
@@ -13,7 +14,11 @@ public:
 
     void pushSample(float sample);
     bool isFFTReady() const;
+    bool detectSpeech();
     const std::array<float, fftSize / 2>& getFFTData();
+
+    void setSampleRate(double rate);
+    void setSpeechThreshold(float threshold);
 
 private:
     void performFFT();
@@ -26,4 +31,7 @@ private:
     int writeIndex = 0;
     int numSamplesCollected = 0;
     bool fftReady = false;
+
+    double sampleRate = 44100.0;
+    float speechThreshold = 0.01f;
 };

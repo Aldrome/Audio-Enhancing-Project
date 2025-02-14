@@ -12,6 +12,16 @@ FFTProcess::~FFTProcess()
 
 }
 
+void FFTProcess::setSampleRate(double rate)
+{
+    sampleRate = rate;
+}
+
+void FFTProcess::setSpeechThreshold(float threshold)
+{
+    speechThreshold = threshold;
+}
+
 void FFTProcess::pushSample(float sample)
 {
     // Store the sample in the circular buffer
@@ -49,6 +59,24 @@ void FFTProcess::performFFT()
 bool FFTProcess::isFFTReady() const
 {
     return fftReady;
+}
+
+bool FFTProcess::detectSpeech()
+{
+    if (!fftReady) return false; // No new FFT data yet
+
+    float energy = 0.0f;
+    int binStart = static_cast<int>(300.0 / (sampleRate / fftSize));  // Approx 300 Hz bin
+    int binEnd = static_cast<int>(4000.0 / (sampleRate / fftSize));   // Approx 4 kHz bin
+
+    for (int i = binStart; i < binEnd; ++i)
+    {
+        energy += fftBuffer[i] * fftBuffer[i]; // Power spectrum (magnitude squared)
+    }
+
+    energy = std::sqrt(energy / (binEnd - binStart)); // Normalize energy
+
+    return energy > speechThreshold; // Simple thresholding
 }
 
 const std::array<float, FFTProcess::fftSize / 2>& FFTProcess::getFFTData()
