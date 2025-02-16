@@ -1,0 +1,206 @@
+﻿  Main.cpp
+  MainComponent.cpp
+E:\123\Graduation_Topic\Source\MainComponent.h(10,31): error C2653: 'juce': 不是類別或命名空間名稱
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(10,31): error C2653: 'juce': 不是類別或命名空間名稱
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(10,37): error C2504: 'Component': 基底類別未定義
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(10,37): error C2504: 'Component': 基底類別未定義
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(18,17): error C2653: 'juce': 不是類別或命名空間名稱
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(18,23): error C2061: 語法錯誤: 識別項 'Graphics'
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(18,17): error C2653: 'juce': 不是類別或命名空間名稱
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(18,23): error C2061: 語法錯誤: 識別項 'Graphics'
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(27,1): error C2143: 語法錯誤: 遺漏 ';' (在 '}' 之前)
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(27,1): error C2143: 語法錯誤: 遺漏 ';' (在 '}' 之前)
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(26,5): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(26,5): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(26,5): warning C4183: 'JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR': 遺漏傳回類型; 假設是傳回 'int' 的成員函式
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(26,5): warning C4183: 'JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR': 遺漏傳回類型; 假設是傳回 'int' 的成員函式
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(15,6): error C3668: 'MainComponent::~MainComponent': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(15,6): error C3668: 'MainComponent::~MainComponent': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(18,10): error C3668: 'MainComponent::paint': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(18,10): error C3668: 'MainComponent::paint': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(19,10): error C3668: 'MainComponent::resized': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+  (編譯來源檔案 '../../Source/MainComponent.cpp')
+  
+E:\123\Graduation_Topic\Source\MainComponent.h(19,10): error C3668: 'MainComponent::resized': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+  (編譯來源檔案 '../../Source/Main.cpp')
+  
+E:\123\Graduation_Topic\Source\Main.cpp(13,45): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(7,5): error C3861: 'setSize': 找不到識別項
+E:\123\Graduation_Topic\Source\Main.cpp(13,51): error C2504: 'JUCEApplication': 基底類別未定義
+E:\123\Graduation_Topic\Source\Main.cpp(19,11): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(8,5): error C2065: 'formatManager': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(19,5): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+E:\123\Graduation_Topic\Source\MainComponent.cpp(9,5): error C2065: 'deviceManager': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(19,24): error C3646: 'getApplicationName': 未知的覆寫規範
+E:\123\Graduation_Topic\Source\MainComponent.cpp(10,5): error C2065: 'deviceManager': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(19,43): error C2059: 語法錯誤: ')'
+E:\123\Graduation_Topic\Source\Main.cpp(19,60): error C2334: 在 '{' 之前有未預期的語彙基元; 略過函式主體
+E:\123\Graduation_Topic\Source\Main.cpp(20,11): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(16,5): error C2065: 'deviceManager': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(20,5): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+E:\123\Graduation_Topic\Source\Main.cpp(20,24): error C3646: 'getApplicationVersion': 未知的覆寫規範
+E:\123\Graduation_Topic\Source\MainComponent.cpp(20,21): error C2039: 'getNextAudioBlock': 並非 'MainComponent' 的成員
+      E:\123\Graduation_Topic\Source\MainComponent.h(10,7):
+      請參閱 'MainComponent' 的宣告
+  
+E:\123\Graduation_Topic\Source\Main.cpp(20,46): error C2059: 語法錯誤: ')'
+E:\123\Graduation_Topic\Source\MainComponent.cpp(20,45): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\Main.cpp(20,60): error C2334: 在 '{' 之前有未預期的語彙基元; 略過函式主體
+E:\123\Graduation_Topic\Source\MainComponent.cpp(20,39): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+E:\123\Graduation_Topic\Source\Main.cpp(24,28): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(20,73): error C2143: 語法錯誤: 遺漏 ',' (在 '&' 之前)
+E:\123\Graduation_Topic\Source\Main.cpp(24,22): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+E:\123\Graduation_Topic\Source\MainComponent.cpp(22,20): error C2065: 'deviceManager': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(24,40): error C2143: 語法錯誤: 遺漏 ',' (在 '&' 之前)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(23,9): error C3536: 'device': 無法在初始化之前使用
+E:\123\Graduation_Topic\Source\Main.cpp(46,40): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\Main.cpp(46,34): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+E:\123\Graduation_Topic\Source\Main.cpp(46,52): error C2143: 語法錯誤: 遺漏 ',' (在 '&' 之前)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(23,16): error C2446: '==': 沒有從 'nullptr' 至 'int' 的轉換
+      E:\123\Graduation_Topic\Source\MainComponent.cpp(23,19):
+      原生 nullptr 只能轉換成 bool，或使用 reinterpret_cast 轉換成整數類資料類型
+  
+E:\123\Graduation_Topic\Source\Main.cpp(58,34): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\Main.cpp(58,40): error C2504: 'DocumentWindow': 基底類別未定義
+E:\123\Graduation_Topic\Source\MainComponent.cpp(28,37): error C3536: 'numOutputChannels': 無法在初始化之前使用
+E:\123\Graduation_Topic\Source\Main.cpp(61,21): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(30,23): error C3536: 'numInputChannels': 無法在初始化之前使用
+E:\123\Graduation_Topic\Source\Main.cpp(61,27): error C2061: 語法錯誤: 識別項 'String'
+E:\123\Graduation_Topic\Source\MainComponent.cpp(32,13): error C2065: 'bufferToFill': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(97,5): error C2143: 語法錯誤: 遺漏 ';' (在 '}' 之前)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(32,56): error C2065: 'bufferToFill': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(96,9): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+E:\123\Graduation_Topic\Source\Main.cpp(96,9): warning C4183: 'JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR': 遺漏傳回類型; 假設是傳回 'int' 的成員函式
+E:\123\Graduation_Topic\Source\MainComponent.cpp(32,89): error C2065: 'bufferToFill': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(80,14): error C3668: 'Graduation_TopicApplication::MainWindow::closeButtonPressed': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+E:\123\Graduation_Topic\Source\MainComponent.cpp(36,13): error C2065: 'bufferToFill': 未宣告的識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(36,52): error C2065: 'bufferToFill': 未宣告的識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(40,28): error C2065: 'bufferToFill': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(100,10): error C2039: 'unique_ptr': 並非 'std' 的成員
+      E:\123\Graduation_Topic\Builds\VisualStudio2022\predefined C++ types (compiler internal)(357,11):
+      請參閱 'std' 的宣告
+  
+E:\123\Graduation_Topic\Source\MainComponent.cpp(40,5): error C3861: 'applyEchoCancellation': 找不到識別項
+E:\123\Graduation_Topic\Source\Main.cpp(100,20): error C2143: 語法錯誤: 遺漏 ';' (在 '<' 之前)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(41,26): error C2065: 'bufferToFill': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(100,10): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+E:\123\Graduation_Topic\Source\MainComponent.cpp(41,5): error C3861: 'applyNoiseReduction': 找不到識別項
+E:\123\Graduation_Topic\Source\Main.cpp(100,43): error C2238: 在 ';' 之前有未預期的語彙基元
+E:\123\Graduation_Topic\Source\MainComponent.cpp(42,35): error C2065: 'bufferToFill': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(21,10): error C3668: 'Graduation_TopicApplication::moreThanOneInstanceAllowed': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+E:\123\Graduation_Topic\Source\MainComponent.cpp(42,5): error C3861: 'applyDynamicRangeCompression': 找不到識別項
+E:\123\Graduation_Topic\Source\Main.cpp(24,10): error C3668: 'Graduation_TopicApplication::initialise': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+E:\123\Graduation_Topic\Source\MainComponent.cpp(43,29): error C2065: 'bufferToFill': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(31,10): error C3668: 'Graduation_TopicApplication::shutdown': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+E:\123\Graduation_Topic\Source\MainComponent.cpp(43,5): error C3861: 'applySpeechEnhancement': 找不到識別項
+E:\123\Graduation_Topic\Source\Main.cpp(39,10): error C3668: 'Graduation_TopicApplication::systemRequestedQuit': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+E:\123\Graduation_Topic\Source\Main.cpp(46,10): error C3668: 'Graduation_TopicApplication::anotherInstanceStarted': 具有覆寫規範 'override' 的方法並未覆寫任何基底類別方法
+E:\123\Graduation_Topic\Source\MainComponent.cpp(47,21): error C2039: 'applyEchoCancellation': 並非 'MainComponent' 的成員
+      E:\123\Graduation_Topic\Source\MainComponent.h(10,7):
+      請參閱 'MainComponent' 的宣告
+  
+E:\123\Graduation_Topic\Source\MainComponent.cpp(47,43): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\Main.cpp(28,9): error C2065: 'mainWindow': 未宣告的識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(47,49): error C2065: 'AudioBuffer': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(28,43): error C3861: 'getApplicationName': 找不到識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(47,61): error C2062: 未預期的類型 'float'
+E:\123\Graduation_Topic\Source\MainComponent.cpp(48,1): error C2143: 語法錯誤: 遺漏 ';' (在 '{' 之前)
+E:\123\Graduation_Topic\Source\Main.cpp(35,9): error C2065: 'mainWindow': 未宣告的識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(48,1): error C2447: '{': 遺漏函式標頭 (舊樣式型式清單?)
+E:\123\Graduation_Topic\Source\Main.cpp(43,9): error C3861: 'quit': 找不到識別項
+E:\123\Graduation_Topic\Source\Main.cpp(62,31): error C2065: 'name': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(63,31): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(61,21): error C2039: 'applyNoiseReduction': 並非 'MainComponent' 的成員
+      E:\123\Graduation_Topic\Source\MainComponent.h(10,7):
+      請參閱 'MainComponent' 的宣告
+  
+E:\123\Graduation_Topic\Source\Main.cpp(63,46): error C3861: 'getInstance': 找不到識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(61,41): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\Main.cpp(64,72): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(61,47): error C2065: 'AudioBuffer': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(64,95): error C2065: 'backgroundColourId': 未宣告的識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(61,59): error C2062: 未預期的類型 'float'
+E:\123\Graduation_Topic\Source\Main.cpp(65,31): error C2653: 'DocumentWindow': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(62,1): error C2143: 語法錯誤: 遺漏 ';' (在 '{' 之前)
+E:\123\Graduation_Topic\Source\Main.cpp(65,47): error C2065: 'allButtons': 未宣告的識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(62,1): error C2447: '{': 遺漏函式標頭 (舊樣式型式清單?)
+E:\123\Graduation_Topic\Source\Main.cpp(62,15): error C2614: 'Graduation_TopicApplication::MainWindow': 成員初始化不合法: 'DocumentWindow' 不是基底或成員類別
+E:\123\Graduation_Topic\Source\Main.cpp(67,13): error C3861: 'setUsingNativeTitleBar': 找不到識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(74,21): error C2039: 'applyDynamicRangeCompression': 並非 'MainComponent' 的成員
+      E:\123\Graduation_Topic\Source\MainComponent.h(10,7):
+      請參閱 'MainComponent' 的宣告
+  
+E:\123\Graduation_Topic\Source\Main.cpp(68,13): error C3861: 'setContentOwned': 找不到識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(74,50): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\Main.cpp(73,13): error C3861: 'setResizable': 找不到識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(74,56): error C2065: 'AudioBuffer': 未宣告的識別項
+E:\123\Graduation_Topic\Source\Main.cpp(74,29): error C3861: 'getWidth': 找不到識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(74,68): error C2062: 未預期的類型 'float'
+E:\123\Graduation_Topic\Source\Main.cpp(74,41): error C3861: 'getHeight': 找不到識別項
+E:\123\Graduation_Topic\Source\Main.cpp(74,13): error C3861: 'centreWithSize': 找不到識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(75,1): error C2143: 語法錯誤: 遺漏 ';' (在 '{' 之前)
+E:\123\Graduation_Topic\Source\Main.cpp(77,13): error C3861: 'setVisible': 找不到識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(75,1): error C2447: '{': 遺漏函式標頭 (舊樣式型式清單?)
+E:\123\Graduation_Topic\Source\Main.cpp(85,13): error C2653: 'JUCEApplication': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\Main.cpp(85,30): error C3861: 'getInstance': 找不到識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(91,21): error C2039: 'applySpeechEnhancement': 並非 'MainComponent' 的成員
+      E:\123\Graduation_Topic\Source\MainComponent.h(10,7):
+      請參閱 'MainComponent' 的宣告
+  
+E:\123\Graduation_Topic\Source\MainComponent.cpp(91,44): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\Main.cpp(106,1): error C1004: 找到未預期的檔案結尾
+E:\123\Graduation_Topic\Source\MainComponent.cpp(91,50): error C2065: 'AudioBuffer': 未宣告的識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(91,62): error C2062: 未預期的類型 'float'
+E:\123\Graduation_Topic\Source\MainComponent.cpp(92,1): error C2143: 語法錯誤: 遺漏 ';' (在 '{' 之前)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(92,1): error C2447: '{': 遺漏函式標頭 (舊樣式型式清單?)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(102,27): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(102,33): error C2065: 'Graphics': 未宣告的識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(102,43): error C2065: 'g': 未宣告的識別項
+E:\123\Graduation_Topic\Source\MainComponent.cpp(102,21): error C2761: 'void MainComponent::paint(void)': 不允許重新宣告成員
+E:\123\Graduation_Topic\Source\MainComponent.cpp(103,1): error C2143: 語法錯誤: 遺漏 ';' (在 '{' 之前)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(104,5): error C3927: '->': 尾端傳回類型不得接在非函式宣告子之後
+E:\123\Graduation_Topic\Source\MainComponent.cpp(104,6): error C3484: 語法錯誤: 傳回類型的前面必須是 '->'
+E:\123\Graduation_Topic\Source\MainComponent.cpp(104,7): error C3613: '->' 後方遺漏傳回類型 (假設為 'int')
+E:\123\Graduation_Topic\Source\MainComponent.cpp(104,5): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+E:\123\Graduation_Topic\Source\MainComponent.cpp(104,7): error C2146: 語法錯誤: 遺漏 ';' (在識別項 'fillAll' 之前)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(104,15): error C2653: 'juce': 不是類別或命名空間名稱
+E:\123\Graduation_Topic\Source\MainComponent.cpp(105,1): error C2059: 語法錯誤: '}'
+E:\123\Graduation_Topic\Source\MainComponent.cpp(105,1): error C2143: 語法錯誤: 遺漏 ';' (在 '}' 之前)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(109,1): error C2143: 語法錯誤: 遺漏 ';' (在 '{' 之前)
+E:\123\Graduation_Topic\Source\MainComponent.cpp(109,1): error C2447: '{': 遺漏函式標頭 (舊樣式型式清單?)

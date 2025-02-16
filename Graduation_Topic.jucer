@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="cbwZYX" name="Graduation_Topic" projectType="guiapp" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+  <MAINGROUP id="CbhEvF" name="Graduation_Topic">
+    <GROUP id="{2B1A5A2F-C02D-4988-6282-C9BEEBD1FBC0}" name="Source">
+      <FILE id="kfhGA5" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="xxht7l" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="eo74mu" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES/>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+  <EXPORTFORMATS>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="Graduation_Topic"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="Graduation_Topic"/>
+      </CONFIGURATIONS>
+    </VS2022>
+  </EXPORTFORMATS>
+</JUCERPROJECT>
