@@ -1,6 +1,5 @@
 #include "Equalizer.h"
 
-// Constructor
 Equalizer::Equalizer()
 {
     const int numberOfEQslider = 10; // Equalizer slider count
@@ -19,7 +18,6 @@ Equalizer::Equalizer()
     }
 }
 
-// Destructor
 Equalizer::~Equalizer() {}
 
 // Paint method
