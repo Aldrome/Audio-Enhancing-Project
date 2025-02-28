@@ -146,7 +146,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\SpeechDSP.cpp"/>
-    <ClCompile Include="..\..\Source\FFTProcess.cpp"/>
     <ClCompile Include="..\..\Source\AudioRecorder.cpp"/>
     <ClCompile Include="..\..\Source\VolumeSlider.cpp"/>
     <ClCompile Include="..\..\Source\Equalizer.cpp"/>
@@ -2936,7 +2935,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\SpeechDSP.h"/>
-    <ClInclude Include="..\..\Source\FFTProcess.h"/>
     <ClInclude Include="..\..\Source\AudioRecorder.h"/>
     <ClInclude Include="..\..\Source\VolumeSlider.h"/>
     <ClInclude Include="..\..\Source\Equalizer.h"/>
