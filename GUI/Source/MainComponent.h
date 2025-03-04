@@ -4,8 +4,9 @@
 #include <vector>
 #include <memory>
 
-#include "Equalizer.h"
 #include "AudioRecorder.h"
+#include "Equalizer.h"
+#include "FFTDisplay.h"
 #include "VolumeSlider.h"
 
 //==============================================================================
@@ -20,23 +21,20 @@ public:
     void resized() override;
 
 private:
-    // Vector to hold multiple toggle buttons using unique_ptr
     std::vector<std::unique_ptr<juce::TextButton>> toggleButtons;
 
-    // Vector to track the state of each button
     std::vector<bool> isOnStates;
 
-    // Button click handler
     void toggleButtonClicked(int buttonIndex);
 
-    // Audio recorder
-    std::unique_ptr<AudioRecorder> audioRecorder;
+    void handleFFTData(const std::array<float, 1024>& fftData);
 
-    // Volume slider
+    // Unique Pointers to classes
+    std::unique_ptr<AudioRecorder> audioRecorder;
+    std::unique_ptr<Equalizer> equalizer;
+    std::unique_ptr<FFTDisplay> fftDisplay;
     std::unique_ptr<VolumeSlider> volumeSlider;
 
-    // Unique pointer for the Equalizer component
-    std::unique_ptr<Equalizer> equalizer;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

@@ -2,6 +2,15 @@
 
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="GUI\Source\DSP">
+      <UniqueIdentifier>{E34FEE72-C1F4-EBBB-5044-43894C5D651C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Source\Audio I/O">
+      <UniqueIdentifier>{1C575C17-1065-75E0-43AE-3C11561D83B0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Source\UI">
+      <UniqueIdentifier>{AE18D519-D5E8-62C3-83F4-43160F50CD5B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="GUI\Source">
       <UniqueIdentifier>{AAD0D9AB-4B64-E96C-42BE-DBBD09213BD6}</UniqueIdentifier>
     </Filter>
@@ -374,26 +383,8 @@
     <Filter Include="JUCE Modules\juce_core\files">
       <UniqueIdentifier>{7868764A-6572-381A-906C-9C26792A4C29}</UniqueIdentifier>
     </Filter>
-    <Filter Include="JUCE Modules\juce_core\javascript\choc\containers">
-      <UniqueIdentifier>{259B70B2-0C68-1990-EC86-42DAA564D388}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="JUCE Modules\juce_core\javascript\choc\javascript">
-      <UniqueIdentifier>{19C3DF40-ABE4-49F7-CDD2-7A592EA01F73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="JUCE Modules\juce_core\javascript\choc\math">
-      <UniqueIdentifier>{20DE6E65-B828-EB00-17F7-541D368DFA9B}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="JUCE Modules\juce_core\javascript\choc\platform">
-      <UniqueIdentifier>{5CCB85C1-6052-8F8C-FCA7-E34D5514A0EE}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="JUCE Modules\juce_core\javascript\choc\text">
-      <UniqueIdentifier>{375615B1-7B81-BB18-920B-926E88A78F9A}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="JUCE Modules\juce_core\javascript\choc">
-      <UniqueIdentifier>{17CA846A-C621-9676-4FBD-8B04DBAA4488}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="JUCE Modules\juce_core\javascript">
-      <UniqueIdentifier>{03678508-A517-48BB-FB4A-485628C34E08}</UniqueIdentifier>
+    <Filter Include="JUCE Modules\juce_core\json">
+      <UniqueIdentifier>{ED602AA0-0A43-9721-5882-747B526C812E}</UniqueIdentifier>
     </Filter>
     <Filter Include="JUCE Modules\juce_core\logging">
       <UniqueIdentifier>{07D27C1D-3227-F527-356C-17DA11551A99}</UniqueIdentifier>
@@ -460,6 +451,30 @@
     </Filter>
     <Filter Include="JUCE Modules\juce_data_structures">
       <UniqueIdentifier>{911F0159-A7A8-4A43-3FD4-154F62F4A44B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_dsp\containers">
+      <UniqueIdentifier>{53CF03D3-988B-CD28-9130-CE08FDCEF7E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_dsp\filter_design">
+      <UniqueIdentifier>{29C6FE02-507E-F3FE-16CD-74D84842C1EA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_dsp\frequency">
+      <UniqueIdentifier>{8001BD68-125B-E392-8D3B-1F9C9520A65A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_dsp\maths">
+      <UniqueIdentifier>{EDC17061-CFA0-8EA0-0ADA-90F31C2FB0F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_dsp\native">
+      <UniqueIdentifier>{B813BD14-6565-2525-9AC3-E3AA48EDDA85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_dsp\processors">
+      <UniqueIdentifier>{DDF4BA73-8578-406D-21F8-06B9BC70BFEA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_dsp\widgets">
+      <UniqueIdentifier>{73374573-0194-9A6E-461A-A81EEB511C26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_dsp">
+      <UniqueIdentifier>{5DD60D0E-B16A-0BED-EDC4-C56E6960CA9E}</UniqueIdentifier>
     </Filter>
     <Filter Include="JUCE Modules\juce_events\broadcasters">
       <UniqueIdentifier>{9D5816C2-E2B2-2E3F-B095-AC8BD1100D29}</UniqueIdentifier>
@@ -565,6 +580,15 @@
     </Filter>
     <Filter Include="JUCE Modules\juce_graphics\placement">
       <UniqueIdentifier>{160D9882-0F68-278D-C5F9-8960FD7421D2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_graphics\unicode\sheenbidi\Headers">
+      <UniqueIdentifier>{0CB19E25-4E0F-3B63-F005-249DA1602485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_graphics\unicode\sheenbidi\Source">
+      <UniqueIdentifier>{26969BB2-447E-3386-5885-61B4896FAA0E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Modules\juce_graphics\unicode\sheenbidi">
+      <UniqueIdentifier>{5B44DF93-8EE9-BAF5-0B3B-30AE9E58A3F1}</UniqueIdentifier>
     </Filter>
     <Filter Include="JUCE Modules\juce_graphics\unicode">
       <UniqueIdentifier>{A4846E15-C7B2-BB61-80BA-E284529F3AAA}</UniqueIdentifier>
@@ -673,22 +697,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SpeechDSP.cpp">
+      <Filter>GUI\Source\DSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\AudioRecorder.cpp">
+      <Filter>GUI\Source\Audio I/O</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\VolumeSlider.cpp">
+      <Filter>GUI\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Equalizer.cpp">
+      <Filter>GUI\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FFTDisplay.cpp">
+      <Filter>GUI\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ToggleSlider.cpp">
+      <Filter>GUI\Source\UI</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>GUI\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MainComponent.cpp">
-      <Filter>GUI\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\AudioRecorder.cpp">
-      <Filter>GUI\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\VolumeSlider.cpp">
-      <Filter>GUI\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Equalizer.cpp">
-      <Filter>GUI\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ToggleSlider.cpp">
       <Filter>GUI\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
@@ -838,6 +868,9 @@
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\audio_io\juce_SampleRateHelpers.cpp">
       <Filter>JUCE Modules\juce_audio_devices\audio_io</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\midi_io\juce_MidiDeviceListConnectionBroadcaster.cpp">
+      <Filter>JUCE Modules\juce_audio_devices\midi_io</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\midi_io\juce_MidiDevices.cpp">
       <Filter>JUCE Modules\juce_audio_devices\midi_io</Filter>
     </ClCompile>
@@ -982,6 +1015,9 @@
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SinkFloat.cpp">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SinkI8_24.cpp">
+      <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SinkI16.cpp">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
     </ClCompile>
@@ -992,6 +1028,9 @@
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SourceFloat.cpp">
+      <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SourceI8_24.cpp">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SourceI16.cpp">
@@ -1048,7 +1087,7 @@
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\juce_DirectSound_windows.cpp">
       <Filter>JUCE Modules\juce_audio_devices\native</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\juce_JackAudio_linux.cpp">
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\juce_JackAudio.cpp">
       <Filter>JUCE Modules\juce_audio_devices\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\juce_Midi_android.cpp">
@@ -1432,6 +1471,9 @@
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\samples\vst-utilities\moduleinfotool\source\main.cpp">
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\samples\vst-utilities\moduleinfotool\source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\common\commonstringconvert.cpp">
+      <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\common</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\common\memorystream.cpp">
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\common</Filter>
     </ClCompile>
@@ -1466,6 +1508,9 @@
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\moduleinfo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\utility\stringconvert.cpp">
+      <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\utility\vst2persistence.cpp">
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\vstbus.cpp">
@@ -1601,6 +1646,9 @@
       <Filter>JUCE Modules\juce_audio_processors\utilities</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\utilities\juce_VST2ClientExtensions.cpp">
+      <Filter>JUCE Modules\juce_audio_processors\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\utilities\juce_VST3ClientExtensions.cpp">
       <Filter>JUCE Modules\juce_audio_processors\utilities</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\juce_audio_processors.cpp">
@@ -1756,17 +1804,14 @@
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\files\juce_WildcardFileFilter.cpp">
       <Filter>JUCE Modules\juce_core\files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\juce_Javascript.cpp">
-      <Filter>JUCE Modules\juce_core\javascript</Filter>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\json\juce_JSON.cpp">
+      <Filter>JUCE Modules\juce_core\json</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\juce_JSON.cpp">
-      <Filter>JUCE Modules\juce_core\javascript</Filter>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\json\juce_JSONSerialisation_test.cpp">
+      <Filter>JUCE Modules\juce_core\json</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\juce_JSONSerialisation_test.cpp">
-      <Filter>JUCE Modules\juce_core\javascript</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\juce_JSONUtils.cpp">
-      <Filter>JUCE Modules\juce_core\javascript</Filter>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\json\juce_JSONUtils.cpp">
+      <Filter>JUCE Modules\juce_core\json</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\logging\juce_FileLogger.cpp">
       <Filter>JUCE Modules\juce_core\logging</Filter>
@@ -1954,6 +1999,15 @@
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\text\juce_CharacterFunctions.cpp">
       <Filter>JUCE Modules\juce_core\text</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\text\juce_CharPointer_UTF8_test.cpp">
+      <Filter>JUCE Modules\juce_core\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\text\juce_CharPointer_UTF16_test.cpp">
+      <Filter>JUCE Modules\juce_core\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\text\juce_CharPointer_UTF32_test.cpp">
+      <Filter>JUCE Modules\juce_core\text</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\text\juce_Identifier.cpp">
       <Filter>JUCE Modules\juce_core\text</Filter>
     </ClCompile>
@@ -2098,6 +2152,114 @@
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_data_structures\juce_data_structures.mm">
       <Filter>JUCE Modules\juce_data_structures</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\containers\juce_AudioBlock_test.cpp">
+      <Filter>JUCE Modules\juce_dsp\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\containers\juce_SIMDRegister_test.cpp">
+      <Filter>JUCE Modules\juce_dsp\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\filter_design\juce_FilterDesign.cpp">
+      <Filter>JUCE Modules\juce_dsp\filter_design</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\frequency\juce_Convolution.cpp">
+      <Filter>JUCE Modules\juce_dsp\frequency</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\frequency\juce_Convolution_test.cpp">
+      <Filter>JUCE Modules\juce_dsp\frequency</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\frequency\juce_FFT.cpp">
+      <Filter>JUCE Modules\juce_dsp\frequency</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\frequency\juce_FFT_test.cpp">
+      <Filter>JUCE Modules\juce_dsp\frequency</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\frequency\juce_Windowing.cpp">
+      <Filter>JUCE Modules\juce_dsp\frequency</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_LogRampedValue_test.cpp">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_LookupTable.cpp">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_Matrix.cpp">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_Matrix_test.cpp">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_SpecialFunctions.cpp">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\native\juce_SIMDNativeOps_avx.cpp">
+      <Filter>JUCE Modules\juce_dsp\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\native\juce_SIMDNativeOps_neon.cpp">
+      <Filter>JUCE Modules\juce_dsp\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\native\juce_SIMDNativeOps_sse.cpp">
+      <Filter>JUCE Modules\juce_dsp\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_BallisticsFilter.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_DelayLine.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_DryWetMixer.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_FIRFilter.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_FIRFilter_test.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_FirstOrderTPTFilter.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_IIRFilter.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_LinkwitzRileyFilter.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_Oversampling.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_Panner.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_ProcessorChain_test.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_StateVariableTPTFilter.cpp">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Chorus.cpp">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Compressor.cpp">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_LadderFilter.cpp">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Limiter.cpp">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_NoiseGate.cpp">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Phaser.cpp">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\juce_dsp.cpp">
+      <Filter>JUCE Modules\juce_dsp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\juce_dsp.mm">
+      <Filter>JUCE Modules\juce_dsp</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_events\broadcasters\juce_ActionBroadcaster.cpp">
       <Filter>JUCE Modules\juce_events\broadcasters</Filter>
     </ClCompile>
@@ -2230,7 +2392,10 @@
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\fonts\harfbuzz\hb-common.cc">
       <Filter>JUCE Modules\juce_graphics\fonts\harfbuzz</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\fonts\harfbuzz\hb-coretext.cc">
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\fonts\harfbuzz\hb-coretext-font.cc">
+      <Filter>JUCE Modules\juce_graphics\fonts\harfbuzz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\fonts\harfbuzz\hb-coretext-shape.cc">
       <Filter>JUCE Modules\juce_graphics\fonts\harfbuzz</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\fonts\harfbuzz\hb-directwrite.cc">
@@ -2740,13 +2905,70 @@
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\placement\juce_RectanglePlacement.cpp">
       <Filter>JUCE Modules\juce_graphics\placement</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\BidiChain.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\BidiTypeLookup.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\BracketQueue.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\GeneralCategoryLookup.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\IsolatingRun.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\LevelRun.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\PairingLookup.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\RunQueue.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBAlgorithm.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBBase.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBCodepointSequence.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBLine.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBLog.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBMirrorLocator.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBParagraph.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBScriptLocator.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\ScriptLookup.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\ScriptStack.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SheenBidi.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\StatusStack.c">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\juce_Unicode.cpp">
       <Filter>JUCE Modules\juce_graphics\unicode</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\juce_UnicodeBidi.cpp">
-      <Filter>JUCE Modules\juce_graphics\unicode</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\juce_UnicodeBrackets.cpp">
       <Filter>JUCE Modules\juce_graphics\unicode</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\juce_UnicodeGenerated.cpp">
@@ -2768,6 +2990,9 @@
       <Filter>JUCE Modules\juce_graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\juce_graphics_Harfbuzz.cpp">
+      <Filter>JUCE Modules\juce_graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\juce_graphics_Sheenbidi.c">
       <Filter>JUCE Modules\juce_graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_gui_basics\accessibility\juce_AccessibilityHandler.cpp">
@@ -3427,6 +3652,9 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_data_structures.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\include_juce_dsp.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_events.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
@@ -3434,6 +3662,9 @@
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_graphics_Harfbuzz.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\include_juce_graphics_Sheenbidi.c">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_basics.cpp">
@@ -3444,19 +3675,25 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\MainComponent.h">
-      <Filter>GUI\Source</Filter>
+    <ClInclude Include="..\..\Source\SpeechDSP.h">
+      <Filter>GUI\Source\DSP</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AudioRecorder.h">
-      <Filter>GUI\Source</Filter>
+      <Filter>GUI\Source\Audio I/O</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\VolumeSlider.h">
-      <Filter>GUI\Source</Filter>
+      <Filter>GUI\Source\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Equalizer.h">
-      <Filter>GUI\Source</Filter>
+      <Filter>GUI\Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FFTDisplay.h">
+      <Filter>GUI\Source\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ToggleSlider.h">
+      <Filter>GUI\Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>GUI\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
@@ -3849,6 +4086,9 @@
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SinkFloat.h">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SinkI8_24.h">
+      <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SinkI16.h">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
     </ClInclude>
@@ -3859,6 +4099,9 @@
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SourceFloat.h">
+      <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SourceI8_24.h">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\flowgraph</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_devices\native\oboe\src\flowgraph\SourceI16.h">
@@ -4461,6 +4704,9 @@
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces\base\funknown.h">
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces\base\funknownimpl.h">
+      <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces\base</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces\base\futils.h">
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces\base</Filter>
     </ClInclude>
@@ -4590,6 +4836,9 @@
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces\vst\vsttypes.h">
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces\vst</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\common\commonstringconvert.h">
+      <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\common</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\common\memorystream.h">
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\common</Filter>
     </ClInclude>
@@ -4630,6 +4879,9 @@
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\utility\uid.h">
+      <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\utility\vst2persistence.h">
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\public.sdk\source\vst\vstbus.h">
@@ -4947,50 +5199,14 @@
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\files\juce_WildcardFileFilter.h">
       <Filter>JUCE Modules\juce_core\files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\containers\choc_Value.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\containers</Filter>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\json\juce_JSON.h">
+      <Filter>JUCE Modules\juce_core\json</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\javascript\choc_javascript.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\javascript</Filter>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\json\juce_JSONSerialisation.h">
+      <Filter>JUCE Modules\juce_core\json</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\javascript\choc_javascript_QuickJS.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\javascript</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\math\choc_MathHelpers.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\platform\choc_Assert.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\platform\choc_DisableAllWarnings.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\platform\choc_ReenableAllWarnings.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\text\choc_FloatToString.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\text</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\text\choc_JSON.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\text</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\text\choc_StringUtilities.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\text</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\text\choc_UTF8.h">
-      <Filter>JUCE Modules\juce_core\javascript\choc\text</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\juce_Javascript.h">
-      <Filter>JUCE Modules\juce_core\javascript</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\juce_JSON.h">
-      <Filter>JUCE Modules\juce_core\javascript</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\juce_JSONSerialisation.h">
-      <Filter>JUCE Modules\juce_core\javascript</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\juce_JSONUtils.h">
-      <Filter>JUCE Modules\juce_core\javascript</Filter>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\json\juce_JSONUtils.h">
+      <Filter>JUCE Modules\juce_core\json</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\logging\juce_FileLogger.h">
       <Filter>JUCE Modules\juce_core\logging</Filter>
@@ -5029,6 +5245,9 @@
       <Filter>JUCE Modules\juce_core\memory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\memory\juce_ContainerDeletePolicy.h">
+      <Filter>JUCE Modules\juce_core\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\memory\juce_CopyableHeapBlock.h">
       <Filter>JUCE Modules\juce_core\memory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\memory\juce_HeapBlock.h">
@@ -5381,6 +5600,144 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_data_structures\juce_data_structures.h">
       <Filter>JUCE Modules\juce_data_structures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\containers\juce_AudioBlock.h">
+      <Filter>JUCE Modules\juce_dsp\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\containers\juce_SIMDRegister.h">
+      <Filter>JUCE Modules\juce_dsp\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\containers\juce_SIMDRegister_Impl.h">
+      <Filter>JUCE Modules\juce_dsp\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\filter_design\juce_FilterDesign.h">
+      <Filter>JUCE Modules\juce_dsp\filter_design</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\frequency\juce_Convolution.h">
+      <Filter>JUCE Modules\juce_dsp\frequency</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\frequency\juce_FFT.h">
+      <Filter>JUCE Modules\juce_dsp\frequency</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\frequency\juce_Windowing.h">
+      <Filter>JUCE Modules\juce_dsp\frequency</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_FastMathApproximations.h">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_LogRampedValue.h">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_LookupTable.h">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_Matrix.h">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_Phase.h">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_Polynomial.h">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\maths\juce_SpecialFunctions.h">
+      <Filter>JUCE Modules\juce_dsp\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\native\juce_SIMDNativeOps_avx.h">
+      <Filter>JUCE Modules\juce_dsp\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\native\juce_SIMDNativeOps_fallback.h">
+      <Filter>JUCE Modules\juce_dsp\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\native\juce_SIMDNativeOps_neon.h">
+      <Filter>JUCE Modules\juce_dsp\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\native\juce_SIMDNativeOps_sse.h">
+      <Filter>JUCE Modules\juce_dsp\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_BallisticsFilter.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_DelayLine.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_DryWetMixer.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_FIRFilter.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_FirstOrderTPTFilter.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_IIRFilter.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_IIRFilter_Impl.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_LinkwitzRileyFilter.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_Oversampling.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_Panner.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_ProcessContext.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_ProcessorChain.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_ProcessorDuplicator.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_ProcessorWrapper.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_StateVariableFilter.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\processors\juce_StateVariableTPTFilter.h">
+      <Filter>JUCE Modules\juce_dsp\processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Bias.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Chorus.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Compressor.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Gain.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_LadderFilter.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Limiter.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_NoiseGate.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Oscillator.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Phaser.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_Reverb.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\widgets\juce_WaveShaper.h">
+      <Filter>JUCE Modules\juce_dsp\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_dsp\juce_dsp.h">
+      <Filter>JUCE Modules\juce_dsp</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_events\broadcasters\juce_ActionBroadcaster.h">
       <Filter>JUCE Modules\juce_events\broadcasters</Filter>
@@ -6507,6 +6864,117 @@
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\placement\juce_RectanglePlacement.h">
       <Filter>JUCE Modules\juce_graphics\placement</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBAlgorithm.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBBase.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBBidiType.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBCodepoint.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBCodepointSequence.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBConfig.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBGeneralCategory.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBLine.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBMirrorLocator.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBParagraph.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBRun.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBScript.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SBScriptLocator.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Headers\SheenBidi.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\BidiChain.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\BidiTypeLookup.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\BracketQueue.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\BracketType.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\GeneralCategoryLookup.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\IsolatingRun.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\LevelRun.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\PairingLookup.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\RunExtrema.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\RunKind.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\RunQueue.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBAlgorithm.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBAssert.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBBase.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBCodepointSequence.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBLine.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBLog.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBMirrorLocator.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBParagraph.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\SBScriptLocator.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\ScriptLookup.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\ScriptStack.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\Source\StatusStack.h">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\juce_graphics.h">
       <Filter>JUCE Modules\juce_graphics</Filter>
     </ClInclude>
@@ -7274,12 +7742,6 @@
     <None Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\README.md">
       <Filter>JUCE Modules\juce_audio_processors\format_types\VST3_SDK</Filter>
     </None>
-    <None Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\JUCE_CHANGES.txt">
-      <Filter>JUCE Modules\juce_core\javascript\choc</Filter>
-    </None>
-    <None Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\javascript\choc\LICENSE.md">
-      <Filter>JUCE Modules\juce_core\javascript\choc</Filter>
-    </None>
     <None Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_core\native\java\README.txt">
       <Filter>JUCE Modules\juce_core\native\java</Filter>
     </None>
@@ -7288,6 +7750,9 @@
     </None>
     <None Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\image_formats\pnglib\libpng_readme.txt">
       <Filter>JUCE Modules\juce_graphics\image_formats\pnglib</Filter>
+    </None>
+    <None Include="..\..\..\..\juce-8.0.1-windows\JUCE\modules\juce_graphics\unicode\sheenbidi\JUCE_CHANGES.txt">
+      <Filter>JUCE Modules\juce_graphics\unicode\sheenbidi</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
