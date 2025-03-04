@@ -700,9 +700,6 @@
     <ClCompile Include="..\..\Source\SpeechDSP.cpp">
       <Filter>GUI\Source\DSP</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\FFTProcess.cpp">
-      <Filter>GUI\Source\DSP</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\AudioRecorder.cpp">
       <Filter>GUI\Source\Audio I/O</Filter>
     </ClCompile>
@@ -3679,9 +3676,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\SpeechDSP.h">
-      <Filter>GUI\Source\DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\FFTProcess.h">
       <Filter>GUI\Source\DSP</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AudioRecorder.h">

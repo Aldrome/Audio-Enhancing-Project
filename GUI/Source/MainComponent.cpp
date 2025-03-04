@@ -7,13 +7,19 @@ MainComponent::MainComponent()
     setSize(600, 600);
 
     // Initialize unique pointers
-    volumeSlider = std::make_unique<VolumeSlider>();
     audioRecorder = std::make_unique<AudioRecorder>();
+    fftDisplay = std::make_unique<FFTDisplay>();
     equalizer = std::make_unique<Equalizer>();
+    volumeSlider = std::make_unique<VolumeSlider>();
 
     // Set up the volume slider callback
     volumeSlider->onValueChange = [&](float newVolume) {
         audioRecorder->setVolume(newVolume);
+    };
+
+    audioRecorder->onFFTDataReady = [this](const std::array<float, 1024>& fftData)
+    {
+        handleFFTData(fftData);
     };
 
     addAndMakeVisible(volumeSlider.get());
@@ -41,6 +47,9 @@ MainComponent::MainComponent()
 
     // Add the Equalizer
     addAndMakeVisible(equalizer.get());
+
+    // Add the FFT Display
+    addAndMakeVisible(fftDisplay.get());
 
     resized();  // Call resized to set up positions
 }
@@ -105,6 +114,16 @@ void MainComponent::resized()
             getHeight() - equalizerTop - 40
         );
     }
+
+    if (fftDisplay)
+    {
+        fftDisplay->setBounds(
+            20, 
+            400, 
+            getWidth() - 40, 
+            200
+        );
+    };
 }
 
 //==============================================================================
@@ -144,4 +163,12 @@ void MainComponent::toggleButtonClicked(int buttonIndex)
             DBG("Button " + std::to_string(buttonIndex) + " Switch OFF");
         }
     }
+}
+
+void MainComponent::handleFFTData(const std::array<float, 1024>& fftData)
+{
+    juce::MessageManager::callAsync([this, fftData]()
+    {
+        fftDisplay->setFFTData(fftData);
+    });
 }
