@@ -11,12 +11,14 @@ AudioRecorder::AudioRecorder()
 AudioRecorder::~AudioRecorder()
 {
     shutdownAudio();
+    DBG("AudioRecorder destroyed");
 }
 
 void AudioRecorder::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
     isRecording = true;
     fifoIndex = 0;
+    currentSampleRate = sampleRate;
 }
 
 void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
@@ -33,8 +35,9 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
 
         for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
         {
-            buffer[sample] *= volume.load(); // Apply volume scaling
-            pushNextSampleIntoFifo(buffer[sample]);
+            float rawSample = buffer[sample];
+            buffer[sample] *= volume.load();
+            pushNextSampleIntoFifo(rawSample);
         }
     }
 }
@@ -44,7 +47,6 @@ void AudioRecorder::releaseResources()
     isRecording = false;
 }
 
-// Pushes samples into FIFO and triggers FFT when ready
 void AudioRecorder::pushNextSampleIntoFifo(float sample)
 {
     fifoBuffer[fifoIndex++] = sample;
@@ -57,17 +59,14 @@ void AudioRecorder::pushNextSampleIntoFifo(float sample)
     }
 }
 
-// Processes FFT on the collected samples
 void AudioRecorder::processFFT()
 {
     windowFunction.multiplyWithWindowingTable(fftBuffer.data(), fftSize);
     fft.performRealOnlyForwardTransform(fftBuffer.data());
 
-    // Convert fftBuffer to std::array<float, 1024>
-    std::array<float, 1024> fftArray;
-    std::copy(fftBuffer.begin(), fftBuffer.begin() + 1024, fftArray.begin());
+    std::array<float, 512> fftArray;
+    std::copy(fftBuffer.begin(), fftBuffer.begin() + 512, fftArray.begin());
 
-    // Send FFT data to MainComponent
     if (onFFTDataReady)
         onFFTDataReady(fftArray);
 }
