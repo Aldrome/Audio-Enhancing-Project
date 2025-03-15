@@ -5,6 +5,9 @@
   <MAINGROUP id="ZlYpAG" name="GUI">
     <GROUP id="{56A5B10E-79E4-4720-9347-163C73690171}" name="Source">
       <GROUP id="{5D105B50-9427-2906-86C7-A1C4FF1176B7}" name="DSP">
+        <FILE id="uP7Axt" name="EqualizerDSP.cpp" compile="1" resource="0"
+              file="Source/EqualizerDSP.cpp"/>
+        <FILE id="BbDNXP" name="EqualizerDSP.h" compile="0" resource="0" file="Source/EqualizerDSP.h"/>
         <FILE id="kl6yZP" name="SpeechDSP.cpp" compile="1" resource="0" file="Source/SpeechDSP.cpp"/>
         <FILE id="Ay7ldc" name="SpeechDSP.h" compile="0" resource="0" file="Source/SpeechDSP.h"/>
       </GROUP>

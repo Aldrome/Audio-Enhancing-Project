@@ -1,4 +1,5 @@
 #include "MainComponent.h"
+#include "Equalizer.h"
 
 //==============================================================================
 // Constructor
@@ -47,6 +48,7 @@ MainComponent::MainComponent()
 
     // Add the Equalizer
     addAndMakeVisible(equalizer.get());
+    setSize(600, 400);
 
     // Add the FFT Display
     addAndMakeVisible(fftDisplay.get());
@@ -172,4 +174,3 @@ void MainComponent::handleFFTData(const std::array<float, 512>& fftData)
         fftDisplay->setFFTData(fftData);
     });
 }
-
