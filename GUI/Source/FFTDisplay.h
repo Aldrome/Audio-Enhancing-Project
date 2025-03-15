@@ -17,7 +17,7 @@ private:
     static constexpr int fftSize = 512;
     static constexpr int widthSize = 512; // Number of time steps stored
 
-    std::array<std::array<float, fftSize / 2>, widthSize> spectrogramData = {};
+    juce::Image spectrogramImage;
     int writeIndex = 0; // Circular buffer index
 
     void timerCallback() override;

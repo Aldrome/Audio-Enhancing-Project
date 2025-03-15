@@ -33,8 +33,12 @@ private:
     int fifoIndex = 0;
     double currentSampleRate = 44100.0; // Default, updated in prepareToPlay
 
+    // Use ProcessorDuplicator to apply filter on multiple channels
+    juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> bandpassFilter;
+
     void pushNextSampleIntoFifo(float sample);
     void processFFT();
+    void updateFilter(); // Function to update filter coefficients
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioRecorder)
 };

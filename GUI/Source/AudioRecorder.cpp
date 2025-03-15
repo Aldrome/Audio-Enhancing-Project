@@ -19,7 +19,19 @@ void AudioRecorder::prepareToPlay(int samplesPerBlockExpected, double sampleRate
     isRecording = true;
     fifoIndex = 0;
     currentSampleRate = sampleRate;
+
+    // Initialize filter state with correct sample rate
+    bandpassFilter.state = juce::dsp::IIR::Coefficients<float>::makeBandPass(currentSampleRate, 3000.0f, 2.0f);
+
+    // Prepare the filter with the correct number of channels
+    juce::dsp::ProcessSpec spec;
+    spec.sampleRate = sampleRate;
+    spec.maximumBlockSize = samplesPerBlockExpected;
+    spec.numChannels = 2;
+
+    bandpassFilter.prepare(spec);
 }
+
 
 void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
@@ -29,15 +41,18 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
         return;
     }
 
+    juce::dsp::AudioBlock<float> block(*bufferToFill.buffer);
+    juce::dsp::ProcessContextReplacing<float> context(block);
+    bandpassFilter.process(context); // Now processes stereo audio
+
     for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
     {
         auto* buffer = bufferToFill.buffer->getWritePointer(channel, bufferToFill.startSample);
 
         for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
         {
-            float rawSample = buffer[sample];
-            buffer[sample] *= volume.load();
-            pushNextSampleIntoFifo(rawSample);
+            float processedSample = buffer[sample] * volume.load();
+            pushNextSampleIntoFifo(processedSample);
         }
     }
 }
@@ -74,4 +89,10 @@ void AudioRecorder::processFFT()
 void AudioRecorder::setVolume(float newVolume)
 {
     volume.store(juce::Decibels::decibelsToGain(newVolume));
+}
+
+void AudioRecorder::updateFilter()
+{
+    auto coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(currentSampleRate, 3000.0f, 2.0f);
+    *bandpassFilter.state = *coefficients;
 }
