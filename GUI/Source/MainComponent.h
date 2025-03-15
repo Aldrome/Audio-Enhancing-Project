@@ -27,7 +27,7 @@ private:
 
     void toggleButtonClicked(int buttonIndex);
 
-    void handleFFTData(const std::array<float, 1024>& fftData);
+    void handleFFTData(const std::array<float, 512>& fftData);
 
     // Unique Pointers to classes
     std::unique_ptr<AudioRecorder> audioRecorder;

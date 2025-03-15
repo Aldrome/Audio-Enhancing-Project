@@ -17,7 +17,7 @@ MainComponent::MainComponent()
         audioRecorder->setVolume(newVolume);
     };
 
-    audioRecorder->onFFTDataReady = [this](const std::array<float, 1024>& fftData)
+    audioRecorder->onFFTDataReady = [this](const std::array<float, 512>& fftData)
     {
         handleFFTData(fftData);
     };
@@ -141,7 +141,7 @@ void MainComponent::toggleButtonClicked(int buttonIndex)
         {
             if (isOnStates[buttonIndex])
             {
-                audioRecorder->prepareToPlay(512, 44100.0);  // Call necessary methods
+                audioRecorder->prepareToPlay(256, 24000.0);  // Call necessary methods
                 DBG("Recording started");
             }
             else
@@ -165,10 +165,11 @@ void MainComponent::toggleButtonClicked(int buttonIndex)
     }
 }
 
-void MainComponent::handleFFTData(const std::array<float, 1024>& fftData)
+void MainComponent::handleFFTData(const std::array<float, 512>& fftData)
 {
     juce::MessageManager::callAsync([this, fftData]()
     {
         fftDisplay->setFFTData(fftData);
     });
 }
+
