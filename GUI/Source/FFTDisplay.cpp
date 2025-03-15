@@ -4,12 +4,12 @@ FFTDisplay::FFTDisplay()
     : spectrogramImage(juce::Image::RGB, widthSize, fftSize / 2, true) // True = has an alpha channel
 {
     spectrogramImage.clear(spectrogramImage.getBounds(), juce::Colours::black);
-    startTimerHz(30); // Update at 30 FPS
+    startTimerHz(30);
 }
 
 FFTDisplay::~FFTDisplay()
 {
-    DBG("FFTDisplay destroyed");
+    
 }
 
 void FFTDisplay::setFFTData(const std::array<float, 512>& newFFTData)

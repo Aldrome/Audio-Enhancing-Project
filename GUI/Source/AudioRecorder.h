@@ -13,6 +13,7 @@ public:
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
     void releaseResources() override;
     void setVolume(float newVolume);
+    void setFilterEnabled(bool enabled);
 
     bool isRecording = false;
 
@@ -31,14 +32,24 @@ private:
     std::vector<float> fftBuffer;
     std::vector<float> fifoBuffer;
     int fifoIndex = 0;
-    double currentSampleRate = 44100.0; // Default, updated in prepareToPlay
+    double currentSampleRate = 44100.0;
 
-    // Use ProcessorDuplicator to apply filter on multiple channels
+    //------------------------------------------------------
+    // Filters
+    bool isFilterEnabled = true;
+
+    // Bandpass filter to keep speech range
     juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> bandpassFilter;
+
+    // High-shelf EQ to add brightness
+    juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> highShelfFilter;
+
+    // Multi-band expander to restore dynamics in high frequencies
+    juce::dsp::Compressor<float> highBandExpander;
 
     void pushNextSampleIntoFifo(float sample);
     void processFFT();
-    void updateFilter(); // Function to update filter coefficients
+    void updateFilters();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioRecorder)
 };

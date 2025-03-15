@@ -20,18 +20,18 @@ void AudioRecorder::prepareToPlay(int samplesPerBlockExpected, double sampleRate
     fifoIndex = 0;
     currentSampleRate = sampleRate;
 
-    // Initialize filter state with correct sample rate
-    bandpassFilter.state = juce::dsp::IIR::Coefficients<float>::makeBandPass(currentSampleRate, 3000.0f, 2.0f);
-
-    // Prepare the filter with the correct number of channels
+    // Prepare processing spec
     juce::dsp::ProcessSpec spec;
     spec.sampleRate = sampleRate;
     spec.maximumBlockSize = samplesPerBlockExpected;
     spec.numChannels = 2;
 
+    // Initialize filters and expander
+    updateFilters();
     bandpassFilter.prepare(spec);
+    highShelfFilter.prepare(spec);
+    highBandExpander.prepare(spec);
 }
-
 
 void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
@@ -43,7 +43,12 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
 
     juce::dsp::AudioBlock<float> block(*bufferToFill.buffer);
     juce::dsp::ProcessContextReplacing<float> context(block);
-    bandpassFilter.process(context); // Now processes stereo audio
+
+    if (isFilterEnabled) // Apply filter only if enabled
+    {
+        bandpassFilter.process(context);
+        highShelfFilter.process(context);
+    }
 
     for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
     {
@@ -51,16 +56,26 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
 
         for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
         {
-            float processedSample = buffer[sample] * volume.load();
-            pushNextSampleIntoFifo(processedSample);
+            float processedSample = buffer[sample];
+
+            pushNextSampleIntoFifo(processedSample); // FFT input remains unchanged
+            buffer[sample] *= volume.load(); // Apply volume control after FFT
         }
     }
 }
+
+
 
 void AudioRecorder::releaseResources()
 {
     isRecording = false;
 }
+
+void AudioRecorder::setFilterEnabled(bool enabled)
+{
+    isFilterEnabled = enabled;
+}
+
 
 void AudioRecorder::pushNextSampleIntoFifo(float sample)
 {
@@ -91,8 +106,19 @@ void AudioRecorder::setVolume(float newVolume)
     volume.store(juce::Decibels::decibelsToGain(newVolume));
 }
 
-void AudioRecorder::updateFilter()
+void AudioRecorder::updateFilters()
 {
-    auto coefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(currentSampleRate, 3000.0f, 2.0f);
-    *bandpassFilter.state = *coefficients;
+    // Bandpass: Extend low end to bring back deepness (80 Hz - 14 kHz)
+    auto bandpassCoefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(currentSampleRate, 7050.0f, 0.7f);
+    *bandpassFilter.state = *bandpassCoefficients;
+
+    // High-shelf EQ: Reduce boost & make it smoother
+    auto highShelfCoefficients = juce::dsp::IIR::Coefficients<float>::makeHighShelf(currentSampleRate, 4500.0f, 0.9f, 1.1f);
+    *highShelfFilter.state = *highShelfCoefficients;
+
+    // Multi-band expander: Keep clarity but prevent excess noise boosting
+    highBandExpander.setThreshold(-33.0f);  // Slightly higher to avoid boosting noise
+    highBandExpander.setRatio(1.3f);        // Less aggressive expansion
+    highBandExpander.setAttack(10.0f);      // Faster response for clarity
+    highBandExpander.setRelease(120.0f);    // Reduce pumping and artifacts
 }

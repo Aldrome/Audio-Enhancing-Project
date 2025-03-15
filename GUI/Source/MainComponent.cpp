@@ -110,20 +110,21 @@ void MainComponent::resized()
         equalizer->setBounds(
             20,
             equalizerTop,
-            getWidth() - 40,
+            (getWidth() - 60) / 2,  // Half width minus spacing
             getHeight() - equalizerTop - 40
         );
     }
 
+    // FFT Display placement
     if (fftDisplay)
     {
         fftDisplay->setBounds(
-            20, 
-            400, 
-            getWidth() - 40, 
-            200
+            40 + (getWidth() - 60) / 2, // Right side
+            equalizerTop,
+            (getWidth() - 60) / 2,  // Half width minus spacing
+            getHeight() - equalizerTop - 40
         );
-    };
+    }
 }
 
 //==============================================================================
@@ -136,7 +137,11 @@ void MainComponent::toggleButtonClicked(int buttonIndex)
 
         isOnStates[buttonIndex] = !isOnStates[buttonIndex];  // Toggle the state
 
-        // If this is the button that controls audio recording, start/stop recording
+        if (buttonIndex == 0) // Filter Toggle Button
+        {
+            audioRecorder->setFilterEnabled(isOnStates[buttonIndex]);
+        }
+
         if (buttonIndex == 2)  // Assuming buttonIndex 2 controls recording
         {
             if (isOnStates[buttonIndex])
