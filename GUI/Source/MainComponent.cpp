@@ -17,7 +17,7 @@ MainComponent::MainComponent()
         audioRecorder->setVolume(newVolume);
     };
 
-    audioRecorder->onFFTDataReady = [this](const std::array<float, 1024>& fftData)
+    audioRecorder->onFFTDataReady = [this](const std::array<float, 512>& fftData)
     {
         handleFFTData(fftData);
     };
@@ -52,6 +52,8 @@ MainComponent::MainComponent()
     addAndMakeVisible(fftDisplay.get());
 
     resized();  // Call resized to set up positions
+
+	startTimerHz(20);  // Start a timer to refresh the UI
 }
 
 MainComponent::~MainComponent() = default;
@@ -65,6 +67,15 @@ void MainComponent::paint(juce::Graphics& g)
     g.setFont(juce::Font(50.0f));
     g.setColour(juce::Colours::white);
     g.drawText("Audio Enhancement Project", getLocalBounds(), juce::Justification::centredTop, true);
+
+    // Draw speech detection circle
+    bool detected = audioRecorder->isSpeechDetected();
+
+    g.setColour(detected ? juce::Colours::green : juce::Colours::darkgrey);
+    int radius = 20;
+    int x = getWidth() - radius - 20;
+    int y = 20;
+    g.fillEllipse((float)x, (float)y, (float)radius, (float)radius);
 }
 
 //==============================================================================
@@ -110,20 +121,21 @@ void MainComponent::resized()
         equalizer->setBounds(
             20,
             equalizerTop,
-            getWidth() - 40,
+            (getWidth() - 60) / 2,  // Half width minus spacing
             getHeight() - equalizerTop - 40
         );
     }
 
+    // FFT Display placement
     if (fftDisplay)
     {
         fftDisplay->setBounds(
-            20, 
-            400, 
-            getWidth() - 40, 
-            200
+            40 + (getWidth() - 60) / 2, // Right side
+            equalizerTop,
+            (getWidth() - 60) / 2,  // Half width minus spacing
+            getHeight() - equalizerTop - 40
         );
-    };
+    }
 }
 
 //==============================================================================
@@ -136,12 +148,16 @@ void MainComponent::toggleButtonClicked(int buttonIndex)
 
         isOnStates[buttonIndex] = !isOnStates[buttonIndex];  // Toggle the state
 
-        // If this is the button that controls audio recording, start/stop recording
+        if (buttonIndex == 0) // Filter Toggle Button
+        {
+            audioRecorder->setFilterEnabled(isOnStates[buttonIndex]);
+        }
+
         if (buttonIndex == 2)  // Assuming buttonIndex 2 controls recording
         {
             if (isOnStates[buttonIndex])
             {
-                audioRecorder->prepareToPlay(512, 44100.0);  // Call necessary methods
+                audioRecorder->prepareToPlay(256, 24000.0);  // Call necessary methods
                 DBG("Recording started");
             }
             else
@@ -165,10 +181,15 @@ void MainComponent::toggleButtonClicked(int buttonIndex)
     }
 }
 
-void MainComponent::handleFFTData(const std::array<float, 1024>& fftData)
+void MainComponent::handleFFTData(const std::array<float, 512>& fftData)
 {
     juce::MessageManager::callAsync([this, fftData]()
     {
         fftDisplay->setFFTData(fftData);
     });
+}
+
+void MainComponent::timerCallback()
+{
+    repaint();
 }

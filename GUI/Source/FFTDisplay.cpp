@@ -1,47 +1,41 @@
-#include <JuceHeader.h>
 #include "FFTDisplay.h"
 
-//==============================================================================
 FFTDisplay::FFTDisplay()
+    : spectrogramImage(juce::Image::RGB, widthSize, fftSize / 2, true) // True = has an alpha channel
 {
-	fftData.fill(0);
-	startTimerHz(30); // Refresh UI at 30 FPS
+    spectrogramImage.clear(spectrogramImage.getBounds(), juce::Colours::black);
+    startTimerHz(30);
 }
 
 FFTDisplay::~FFTDisplay()
 {
-
+    
 }
 
-void FFTDisplay::setFFTData(const std::array<float, 1024>& newFFTData)
+void FFTDisplay::setFFTData(const std::array<float, 512>& newFFTData)
 {
-	fftData = newFFTData;
-	repaint();
+    writeIndex = (writeIndex + 1) % widthSize; // Circular buffer update
+
+    for (size_t y = 0; y < fftSize / 2; ++y)
+    {
+        float magnitude = juce::jlimit(0.0f, 1.0f, newFFTData[y]); // Normalize
+        juce::Colour color = juce::Colour::fromHSV(0.67f - magnitude * 0.5f, 1.0f, magnitude, 1.0f);
+        spectrogramImage.setPixelAt(writeIndex, static_cast<int>(y), color);
+    }
 }
 
 void FFTDisplay::paint(juce::Graphics& g)
 {
     g.fillAll(juce::Colours::black);
-
-    g.setColour(juce::Colours::white);
-    juce::Path path;
-    float width = getWidth();
-    float height = getHeight();
-    float binWidth = width / (fftSize / 2.0f);
-
-    for (int i = 0; i < fftSize / 2; ++i)
-    {
-        float magnitude = juce::jmap(juce::Decibels::gainToDecibels(fftData[i]), -100.0f, 0.0f, height, 0.0f);
-        if (i == 0)
-            path.startNewSubPath(i * binWidth, magnitude);
-        else
-            path.lineTo(i * binWidth, magnitude);
-    }
-
-    g.strokePath(path, juce::PathStrokeType(2.0f));
+    g.drawImage(spectrogramImage, getLocalBounds().toFloat());
 }
 
 void FFTDisplay::timerCallback()
 {
     repaint();
+}
+
+int FFTDisplay::getBinIndex(float frequency, float sampleRate) const
+{
+    return static_cast<int>((frequency / (sampleRate / 2)) * (fftSize / 2));
 }

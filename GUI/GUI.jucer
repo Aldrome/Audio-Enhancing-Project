@@ -4,14 +4,16 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
   <MAINGROUP id="ZlYpAG" name="GUI">
     <GROUP id="{56A5B10E-79E4-4720-9347-163C73690171}" name="Source">
-      <GROUP id="{5D105B50-9427-2906-86C7-A1C4FF1176B7}" name="DSP">
-        <FILE id="kl6yZP" name="SpeechDSP.cpp" compile="1" resource="0" file="Source/SpeechDSP.cpp"/>
-        <FILE id="Ay7ldc" name="SpeechDSP.h" compile="0" resource="0" file="Source/SpeechDSP.h"/>
-      </GROUP>
       <GROUP id="{F12AC293-4156-CDCB-0288-776F55C2994B}" name="Audio I/O">
         <FILE id="SQBSui" name="AudioRecorder.cpp" compile="1" resource="0"
               file="Source/AudioRecorder.cpp"/>
         <FILE id="pHFJAm" name="AudioRecorder.h" compile="0" resource="0" file="Source/AudioRecorder.h"/>
+      </GROUP>
+      <GROUP id="{5D105B50-9427-2906-86C7-A1C4FF1176B7}" name="DSP">
+        <FILE id="o1P9yo" name="SpeechDetector.cpp" compile="1" resource="0"
+              file="Source/SpeechDetector.cpp"/>
+        <FILE id="pmVggn" name="SpeechDetector.h" compile="0" resource="0"
+              file="Source/SpeechDetector.h"/>
       </GROUP>
       <GROUP id="{57EF6DBC-8914-46B1-9464-B316D7AECCD0}" name="UI">
         <FILE id="uJ0iQ8" name="VolumeSlider.cpp" compile="1" resource="0"
