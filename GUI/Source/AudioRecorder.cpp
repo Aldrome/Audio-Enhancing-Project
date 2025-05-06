@@ -12,6 +12,8 @@ AudioRecorder::~AudioRecorder()
 {
     shutdownAudio();
     DBG("AudioRecorder destroyed");
+    fftBuffer.clear();
+    fifoBuffer.clear();
 }
 
 void AudioRecorder::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
@@ -28,9 +30,12 @@ void AudioRecorder::prepareToPlay(int samplesPerBlockExpected, double sampleRate
 
     // Initialize filters and expander
     updateFilters();
-    bandpassFilter.prepare(spec);
+    highPassFilter.prepare(spec);
+    lowPassFilter.prepare(spec);
     highShelfFilter.prepare(spec);
     highBandExpander.prepare(spec);
+
+    speechDetector.prepare(sampleRate, fftSize);
 }
 
 void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
@@ -44,9 +49,10 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
     juce::dsp::AudioBlock<float> block(*bufferToFill.buffer);
     juce::dsp::ProcessContextReplacing<float> context(block);
 
-    if (isFilterEnabled) // Apply filter only if enabled
+    if (isFilterEnabled) // Apply filters only if enabled
     {
-        bandpassFilter.process(context);
+        highPassFilter.process(context);
+        lowPassFilter.process(context);
         highShelfFilter.process(context);
     }
 
@@ -64,8 +70,6 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
     }
 }
 
-
-
 void AudioRecorder::releaseResources()
 {
     isRecording = false;
@@ -75,7 +79,6 @@ void AudioRecorder::setFilterEnabled(bool enabled)
 {
     isFilterEnabled = enabled;
 }
-
 
 void AudioRecorder::pushNextSampleIntoFifo(float sample)
 {
@@ -97,8 +100,14 @@ void AudioRecorder::processFFT()
     std::array<float, 512> fftArray;
     std::copy(fftBuffer.begin(), fftBuffer.begin() + 512, fftArray.begin());
 
+    speechDetector.processFrame(fftArray);
+
     if (onFFTDataReady)
         onFFTDataReady(fftArray);
+
+    // Optional logging or state change:
+    if (speechDetector.isSpeechDetected())
+        DBG("Speech detected");
 }
 
 void AudioRecorder::setVolume(float newVolume)
@@ -108,9 +117,13 @@ void AudioRecorder::setVolume(float newVolume)
 
 void AudioRecorder::updateFilters()
 {
-    // Bandpass: Extend low end to bring back deepness (80 Hz - 14 kHz)
-    auto bandpassCoefficients = juce::dsp::IIR::Coefficients<float>::makeBandPass(currentSampleRate, 7050.0f, 0.7f);
-    *bandpassFilter.state = *bandpassCoefficients;
+    // High-pass filter (removes frequencies below 100 Hz)
+    auto highPassCoefficients = juce::dsp::IIR::Coefficients<float>::makeHighPass(currentSampleRate, 100.0f);
+    *highPassFilter.state = *highPassCoefficients;
+
+    // Low-pass filter (removes frequencies above 10 kHz)
+    auto lowPassCoefficients = juce::dsp::IIR::Coefficients<float>::makeLowPass(currentSampleRate, 10000.0f);
+    *lowPassFilter.state = *lowPassCoefficients;
 
     // High-shelf EQ: Reduce boost & make it smoother
     auto highShelfCoefficients = juce::dsp::IIR::Coefficients<float>::makeHighShelf(currentSampleRate, 4500.0f, 0.9f, 1.1f);

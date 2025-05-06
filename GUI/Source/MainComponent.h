@@ -11,7 +11,7 @@
 
 //==============================================================================
 // MainComponent class definition
-class MainComponent : public juce::Component
+class MainComponent : public juce::Component, private juce::Timer
 {
 public:
     MainComponent();
@@ -22,19 +22,18 @@ public:
 
 private:
     std::vector<std::unique_ptr<juce::TextButton>> toggleButtons;
-
     std::vector<bool> isOnStates;
 
     void toggleButtonClicked(int buttonIndex);
-
     void handleFFTData(const std::array<float, 512>& fftData);
 
-    // Unique Pointers to classes
     std::unique_ptr<AudioRecorder> audioRecorder;
     std::unique_ptr<Equalizer> equalizer;
     std::unique_ptr<FFTDisplay> fftDisplay;
     std::unique_ptr<VolumeSlider> volumeSlider;
 
+    void timerCallback() override;  // For UI refresh
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };
+

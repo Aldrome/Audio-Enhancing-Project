@@ -52,6 +52,8 @@ MainComponent::MainComponent()
     addAndMakeVisible(fftDisplay.get());
 
     resized();  // Call resized to set up positions
+
+	startTimerHz(20);  // Start a timer to refresh the UI
 }
 
 MainComponent::~MainComponent() = default;
@@ -65,6 +67,15 @@ void MainComponent::paint(juce::Graphics& g)
     g.setFont(juce::Font(50.0f));
     g.setColour(juce::Colours::white);
     g.drawText("Audio Enhancement Project", getLocalBounds(), juce::Justification::centredTop, true);
+
+    // Draw speech detection circle
+    bool detected = audioRecorder->isSpeechDetected();
+
+    g.setColour(detected ? juce::Colours::green : juce::Colours::darkgrey);
+    int radius = 20;
+    int x = getWidth() - radius - 20;
+    int y = 20;
+    g.fillEllipse((float)x, (float)y, (float)radius, (float)radius);
 }
 
 //==============================================================================
@@ -178,3 +189,7 @@ void MainComponent::handleFFTData(const std::array<float, 512>& fftData)
     });
 }
 
+void MainComponent::timerCallback()
+{
+    repaint();
+}
