@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\AudioRecorder.cpp"/>
+    <ClCompile Include="..\..\Source\SpeechBalancer.cpp"/>
     <ClCompile Include="..\..\Source\SpeechDetector.cpp"/>
     <ClCompile Include="..\..\Source\VolumeSlider.cpp"/>
     <ClCompile Include="..\..\Source\Equalizer.cpp"/>
@@ -2942,6 +2943,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\AudioRecorder.h"/>
+    <ClInclude Include="..\..\Source\SpeechBalancer.h"/>
     <ClInclude Include="..\..\Source\SpeechDetector.h"/>
     <ClInclude Include="..\..\Source\VolumeSlider.h"/>
     <ClInclude Include="..\..\Source\Equalizer.h"/>

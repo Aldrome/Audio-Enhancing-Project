@@ -10,6 +10,10 @@
         <FILE id="pHFJAm" name="AudioRecorder.h" compile="0" resource="0" file="Source/AudioRecorder.h"/>
       </GROUP>
       <GROUP id="{5D105B50-9427-2906-86C7-A1C4FF1176B7}" name="DSP">
+        <FILE id="C429w7" name="SpeechBalancer.cpp" compile="1" resource="0"
+              file="Source/SpeechBalancer.cpp"/>
+        <FILE id="T6JR9B" name="SpeechBalancer.h" compile="0" resource="0"
+              file="Source/SpeechBalancer.h"/>
         <FILE id="o1P9yo" name="SpeechDetector.cpp" compile="1" resource="0"
               file="Source/SpeechDetector.cpp"/>
         <FILE id="pmVggn" name="SpeechDetector.h" compile="0" resource="0"

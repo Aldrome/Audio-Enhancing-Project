@@ -3,22 +3,45 @@
 void SpeechDetector::prepare(double sampleRate, int fftSize)
 {
     currentSampleRate = sampleRate;
-    // Thresholds can be tuned based on actual input
     energyThreshold = 0.01f;
     entropyThreshold = 4.0f;
+    
+    // Smoothing parameters
+    smoothingFactor = 0.1f;  // Lower is smoother, higher is more responsive
+    lastSpeechDetected = false;
+    speechDetectionHistory = 0.0f;
 }
 
 void SpeechDetector::processFrame(const std::array<float, 512>& fftMagnitudes)
 {
-    // Optionally filter low frequencies (wind) by ignoring first ~10 bins (~100–150 Hz)
     std::array<float, 512> filteredMagnitudes = fftMagnitudes;
     for (int i = 0; i < 10; ++i)
-        filteredMagnitudes[i] = 0.0f;
+        filteredMagnitudes[i] = 0.0f; // Filter low frequencies
 
     float energy = calculateEnergy(filteredMagnitudes);
     float entropy = calculateSpectralEntropy(filteredMagnitudes);
 
-    speechDetected = (energy > energyThreshold) && (entropy > entropyThreshold);
+    bool currentDetection = (energy > energyThreshold) && (entropy > entropyThreshold);
+
+    // Apply smoothing/hysteresis
+    if (currentDetection)
+    {
+        speechDetectionHistory = std::min(1.0f, speechDetectionHistory + smoothingFactor); // Gradual increase
+    }
+    else
+    {
+        speechDetectionHistory = std::max(0.0f, speechDetectionHistory - smoothingFactor); // Gradual decrease
+    }
+
+    // Determine speech detection state with hysteresis
+    if (speechDetectionHistory > 0.5f)  // A threshold to decide when speech is detected
+    {
+        speechDetected = true;
+    }
+    else
+    {
+        speechDetected = false;
+    }
 }
 
 bool SpeechDetector::isSpeechDetected() const
