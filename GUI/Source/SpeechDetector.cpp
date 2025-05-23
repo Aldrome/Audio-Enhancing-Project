@@ -14,35 +14,30 @@ void SpeechDetector::prepare(double sampleRate, int fftSize)
 
 void SpeechDetector::processFrame(const std::array<float, 512>& fftMagnitudes)
 {
-    std::array<float, 512> filteredMagnitudes = fftMagnitudes;
-    for (int i = 0; i < 10; ++i)
-        filteredMagnitudes[i] = 0.0f; // Filter low frequencies
+    // Don’t zero out any bins—let energy below 100 Hz through
+    float energy = calculateEnergy(fftMagnitudes);
+    float entropy = calculateSpectralEntropy(fftMagnitudes);
 
-    float energy = calculateEnergy(filteredMagnitudes);
-    float entropy = calculateSpectralEntropy(filteredMagnitudes);
+    bool currentDetection = (energy > energyThreshold)
+        && (entropy > entropyThreshold);
 
-    bool currentDetection = (energy > energyThreshold) && (entropy > entropyThreshold);
-
-    // Apply smoothing/hysteresis
+    // Smoothing
     if (currentDetection)
-    {
-        speechDetectionHistory = std::min(1.0f, speechDetectionHistory + smoothingFactor); // Gradual increase
-    }
+        speechDetectionHistory = std::min(1.0f, speechDetectionHistory + smoothingFactor);
     else
-    {
-        speechDetectionHistory = std::max(0.0f, speechDetectionHistory - smoothingFactor); // Gradual decrease
-    }
+        speechDetectionHistory = std::max(0.0f, speechDetectionHistory - smoothingFactor);
 
-    // Determine speech detection state with hysteresis
-    if (speechDetectionHistory > 0.5f)  // A threshold to decide when speech is detected
-    {
-        speechDetected = true;
-    }
-    else
-    {
-        speechDetected = false;
-    }
+    // Hold logic
+    const juce::uint32 now = juce::Time::getMillisecondCounter();
+    if (speechDetectionHistory > 0.5f)
+        lastDetectionTimeMs = now;
+
+    speechDetected = (speechDetectionHistory > 0.5f)
+        || (now - lastDetectionTimeMs < holdDurationMs);
 }
+
+
+
 
 bool SpeechDetector::isSpeechDetected() const
 {

@@ -153,6 +153,11 @@ void MainComponent::toggleButtonClicked(int buttonIndex)
             audioRecorder->setFilterEnabled(isOnStates[buttonIndex]);
         }
 
+        if (buttonIndex == 1) // Compression + noise gate toggle
+        {
+            audioRecorder->setSpeechBalancerEnabled(isOnStates[buttonIndex]);
+        }
+
         if (buttonIndex == 2)  // Assuming buttonIndex 2 controls recording
         {
             if (isOnStates[buttonIndex])

@@ -16,6 +16,8 @@ public:
 
     void setVolume(float newVolume);
     void setFilterEnabled(bool enabled);
+    void setSpeechBalancerEnabled(bool enabled);
+
 
     std::function<void(const std::array<float, 512>&)> onFFTDataReady;
 
@@ -30,7 +32,8 @@ private:
     void processFFT();
 
     bool isRecording;
-    bool isFilterEnabled = true;
+    bool filterEnabled = true;
+    bool speechBalancerEnabled = true;
     double currentSampleRate = 44100.0;
     std::atomic<float> volume{ 1.0f };
 
@@ -47,6 +50,7 @@ private:
     juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> highPassFilter;
     juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> lowPassFilter;
     juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> highShelfFilter;
+    juce::dsp::ProcessorDuplicator<juce::dsp::IIR::Filter<float>, juce::dsp::IIR::Coefficients<float>> midBoostFilter;
 
     // juce::dsp::Compressor<float> highBandExpander;
 };

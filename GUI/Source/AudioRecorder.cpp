@@ -49,15 +49,17 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
     juce::dsp::AudioBlock<float> block(*bufferToFill.buffer);
     juce::dsp::ProcessContextReplacing<float> context(block);
 
-    if (isFilterEnabled)
+    if (filterEnabled)
     {
         highPassFilter.process(context);
         lowPassFilter.process(context);
         highShelfFilter.process(context);
     }
 
-    if (speechDetector.isSpeechDetected())
+    if (speechBalancerEnabled)
+    {
         speechBalancer.process(block);
+    }
 
     for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
     {
@@ -80,8 +82,16 @@ void AudioRecorder::releaseResources()
 
 void AudioRecorder::setFilterEnabled(bool enabled)
 {
-    isFilterEnabled = enabled;
+    filterEnabled = enabled;
 }
+
+
+void AudioRecorder::setSpeechBalancerEnabled(bool enabled)
+{
+    speechBalancerEnabled = enabled;
+    speechBalancer.setEnabled(enabled);
+}
+
 
 void AudioRecorder::pushNextSampleIntoFifo(float sample)
 {
@@ -125,12 +135,15 @@ void AudioRecorder::updateFilters()
     *highPassFilter.state = *highPassCoefficients;
 
     // Low-pass filter (removes frequencies above 10 kHz)
-    auto lowPassCoefficients = juce::dsp::IIR::Coefficients<float>::makeLowPass(currentSampleRate, 10000.0f);
+    auto lowPassCoefficients = juce::dsp::IIR::Coefficients<float>::makeLowPass(currentSampleRate, 6000.0f);
     *lowPassFilter.state = *lowPassCoefficients;
 
     // High-shelf EQ: Reduce boost & make it smoother
-    auto highShelfCoefficients = juce::dsp::IIR::Coefficients<float>::makeHighShelf(currentSampleRate, 4500.0f, 0.9f, 1.1f);
+    auto highShelfCoefficients = juce::dsp::IIR::Coefficients<float>::makeHighShelf(currentSampleRate, 4000.0f, 0.9f, 1.2f);
     *highShelfFilter.state = *highShelfCoefficients;
+
+    auto peakCoefficients = juce::dsp::IIR::Coefficients<float>::makePeakFilter(currentSampleRate, 1500.0f, 0.9f, 1.2f);
+    *midBoostFilter.state = *peakCoefficients;
 
     //// Multi-band expander: Keep clarity but prevent excess noise boosting
     //highBandExpander.setThreshold(-33.0f);  // Slightly higher to avoid boosting noise

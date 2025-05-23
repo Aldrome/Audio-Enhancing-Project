@@ -700,6 +700,9 @@
     <ClCompile Include="..\..\Source\AudioRecorder.cpp">
       <Filter>GUI\Source\Audio I/O</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\AutomaticGainControl.cpp">
+      <Filter>GUI\Source\DSP</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\SpeechBalancer.cpp">
       <Filter>GUI\Source\DSP</Filter>
     </ClCompile>
@@ -3686,6 +3689,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\AudioRecorder.h">
       <Filter>GUI\Source\Audio I/O</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\AutomaticGainControl.h">
+      <Filter>GUI\Source\DSP</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SpeechBalancer.h">
       <Filter>GUI\Source\DSP</Filter>

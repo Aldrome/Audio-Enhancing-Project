@@ -1,7 +1,7 @@
 #pragma once
 #include <array>
-#include <vector>
 #include <cmath>
+#include <juce_core/juce_core.h> // Needed for juce::Time
 
 class SpeechDetector
 {
@@ -14,15 +14,22 @@ private:
     float calculateEnergy(const std::array<float, 512>& magnitudes);
     float calculateSpectralEntropy(const std::array<float, 512>& magnitudes);
 
-    // New members for smoothing and hysteresis
-    float energyThreshold = 0.01f;
-    float entropyThreshold = 4.0f;
+    // --- Thresholds for detection ---
+    float energyThreshold = 0.0001f;
+    float entropyThreshold = 2.0f;
 
+    // --- Detection states ---
     bool speechDetected = false;
+    bool lastSpeechDetected = false;
+
+    // --- Sample rate (for future use) ---
     double currentSampleRate = 44100.0;
 
-    // Smoothing-related variables
-    float smoothingFactor = 0.1f;  // Lower is smoother, higher is more responsive
-    float speechDetectionHistory = 0.0f;  // Used to smooth detection state
-    bool lastSpeechDetected = false;
+    // --- Smoothing and hysteresis ---
+    float smoothingFactor = 1.0f;          // Controls response speed
+    float speechDetectionHistory = 0.0f;   // Used for smoothing transitions
+
+    // --- Hold mechanism ---
+    juce::uint32 lastDetectionTimeMs = 0;        // Time of last detection
+    const juce::uint32 holdDurationMs = 600;     // Hold detection "true" for 300ms
 };

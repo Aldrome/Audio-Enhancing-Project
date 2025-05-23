@@ -13,6 +13,9 @@ public:
     void paint(juce::Graphics& g) override;
     void resized() override {}
 
+    juce::Colour getSpectrogramColour(float magnitude);
+
+
 private:
     static constexpr int fftSize = 512;
     static constexpr int widthSize = 512; // Number of time steps stored
