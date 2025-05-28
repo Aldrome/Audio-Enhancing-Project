@@ -12,8 +12,8 @@ public:
     bool isEnabled() const;
 
 private:
-    float targetRMS = 0.8f;           // Target output level (linear gain)
-    float adjustmentSpeed = 0.001f;   // How fast the gain changes
+    float targetRMS = 0.8f;
+    float adjustmentSpeed = 0.001f;
     float currentGain = 1.0f;
     bool enabled = true;
     bool prepared = false;

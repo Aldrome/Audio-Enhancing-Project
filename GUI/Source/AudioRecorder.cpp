@@ -31,9 +31,11 @@ void AudioRecorder::prepareToPlay(int samplesPerBlockExpected, double sampleRate
     highPassFilter.prepare(spec);
     lowPassFilter.prepare(spec);
     highShelfFilter.prepare(spec);
+    midBoostFilter.prepare(spec);
     // highBandExpander.prepare(spec);
 
     speechDetector.prepare(sampleRate, fftSize);
+    energyDetector.prepare(sampleRate);
     speechBalancer.prepare(spec);
 }
 
@@ -46,6 +48,23 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
         return;
     }
 
+    // Feed raw input into FFT & energy detector
+    for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
+    {
+        const float* inputData = bufferToFill.buffer->getReadPointer(channel);
+        for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
+        {
+            float rawSample = inputData[sample];
+            pushNextSampleIntoFifo(rawSample);          // FFT
+            energyDetector.processSample(rawSample);    // Energy detection
+        }
+    }
+
+    // After detection is updated, we can now safely check detection state
+    bool speechDetected = speechDetector.isSpeechDetected();
+    bool energyDetected = energyDetector.isEnergyDetected();
+
+    // Processed path
     juce::dsp::AudioBlock<float> block(*bufferToFill.buffer);
     juce::dsp::ProcessContextReplacing<float> context(block);
 
@@ -54,25 +73,26 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
         highPassFilter.process(context);
         lowPassFilter.process(context);
         highShelfFilter.process(context);
+        midBoostFilter.process(context);
     }
 
-    if (speechBalancerEnabled)
+    if (speechBalancerEnabled && (speechDetected && energyDetected))
     {
         speechBalancer.process(block);
     }
 
+    // Volume control (after processing)
     for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
     {
         auto* buffer = bufferToFill.buffer->getWritePointer(channel, bufferToFill.startSample);
-
         for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
         {
-            float processedSample = buffer[sample];
-            pushNextSampleIntoFifo(processedSample);
             buffer[sample] *= volume.load();
         }
     }
 }
+
+
 
 
 void AudioRecorder::releaseResources()
@@ -117,10 +137,6 @@ void AudioRecorder::processFFT()
 
     if (onFFTDataReady)
         onFFTDataReady(fftArray);
-
-    // Optional logging or state change:
-    if (speechDetector.isSpeechDetected())
-        DBG("Speech detected");
 }
 
 void AudioRecorder::setVolume(float newVolume)

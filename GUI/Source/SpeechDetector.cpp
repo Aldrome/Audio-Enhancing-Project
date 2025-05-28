@@ -1,43 +1,39 @@
 #include "SpeechDetector.h"
 
+// Checks FFT magnitudes for speech presence using energy and spectral entropy
+
 void SpeechDetector::prepare(double sampleRate, int fftSize)
 {
     currentSampleRate = sampleRate;
     energyThreshold = 0.01f;
     entropyThreshold = 4.0f;
-    
-    // Smoothing parameters
-    smoothingFactor = 0.1f;  // Lower is smoother, higher is more responsive
-    lastSpeechDetected = false;
-    speechDetectionHistory = 0.0f;
+
+    lastDetectionTimeMs = 0;
 }
 
 void SpeechDetector::processFrame(const std::array<float, 512>& fftMagnitudes)
 {
-    // Don’t zero out any bins—let energy below 100 Hz through
-    float energy = calculateEnergy(fftMagnitudes);
-    float entropy = calculateSpectralEntropy(fftMagnitudes);
+    std::array<float, 512> filteredMagnitudes = fftMagnitudes;
+    for (int i = 0; i < 10; ++i)
+        filteredMagnitudes[i] = 0.0f;
 
-    bool currentDetection = (energy > energyThreshold)
-        && (entropy > entropyThreshold);
+    float energy = calculateEnergy(filteredMagnitudes);
+    float entropy = calculateSpectralEntropy(filteredMagnitudes);
 
-    // Smoothing
-    if (currentDetection)
-        speechDetectionHistory = std::min(1.0f, speechDetectionHistory + smoothingFactor);
+    // Check immediate detection
+    bool immediateDetection = (energy > energyThreshold) && (entropy > entropyThreshold);
+
+    // If immediate detection occurs, reset lastDetectionTimeMs
+    if (immediateDetection)
+        lastDetectionTimeMs = juce::Time::getMillisecondCounter();
+
+    // Maintain detection if within holdDurationMs
+    juce::uint32 now = juce::Time::getMillisecondCounter();
+    if ((now - lastDetectionTimeMs) < holdDurationMs)
+        speechDetected = true;
     else
-        speechDetectionHistory = std::max(0.0f, speechDetectionHistory - smoothingFactor);
-
-    // Hold logic
-    const juce::uint32 now = juce::Time::getMillisecondCounter();
-    if (speechDetectionHistory > 0.5f)
-        lastDetectionTimeMs = now;
-
-    speechDetected = (speechDetectionHistory > 0.5f)
-        || (now - lastDetectionTimeMs < holdDurationMs);
+        speechDetected = false;
 }
-
-
-
 
 bool SpeechDetector::isSpeechDetected() const
 {

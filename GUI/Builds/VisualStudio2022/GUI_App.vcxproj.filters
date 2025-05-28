@@ -703,6 +703,9 @@
     <ClCompile Include="..\..\Source\AutomaticGainControl.cpp">
       <Filter>GUI\Source\DSP</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\EnergyDetector.cpp">
+      <Filter>GUI\Source\DSP</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\SpeechBalancer.cpp">
       <Filter>GUI\Source\DSP</Filter>
     </ClCompile>
@@ -3691,6 +3694,9 @@
       <Filter>GUI\Source\Audio I/O</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AutomaticGainControl.h">
+      <Filter>GUI\Source\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\EnergyDetector.h">
       <Filter>GUI\Source\DSP</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SpeechBalancer.h">

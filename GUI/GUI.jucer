@@ -14,6 +14,10 @@
               file="Source/AutomaticGainControl.cpp"/>
         <FILE id="bs0zAN" name="AutomaticGainControl.h" compile="0" resource="0"
               file="Source/AutomaticGainControl.h"/>
+        <FILE id="sTFjKg" name="EnergyDetector.cpp" compile="1" resource="0"
+              file="Source/EnergyDetector.cpp"/>
+        <FILE id="fG6MLD" name="EnergyDetector.h" compile="0" resource="0"
+              file="Source/EnergyDetector.h"/>
         <FILE id="C429w7" name="SpeechBalancer.cpp" compile="1" resource="0"
               file="Source/SpeechBalancer.cpp"/>
         <FILE id="T6JR9B" name="SpeechBalancer.h" compile="0" resource="0"

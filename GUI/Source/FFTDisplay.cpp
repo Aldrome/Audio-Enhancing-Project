@@ -1,4 +1,4 @@
-﻿#include "FFTDisplay.h"
+#include "FFTDisplay.h"
 
 FFTDisplay::FFTDisplay()
     : spectrogramImage(juce::Image::RGB, widthSize, fftSize / 2, true) // True = has an alpha channel

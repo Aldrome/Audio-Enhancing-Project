@@ -3,6 +3,7 @@
 #include <JuceHeader.h>
 #include "SpeechDetector.h"
 #include "SpeechBalancer.h"
+#include "EnergyDetector.h"
 
 class AudioRecorder : public juce::AudioAppComponent
 {
@@ -22,9 +23,11 @@ public:
     std::function<void(const std::array<float, 512>&)> onFFTDataReady;
 
     bool isSpeechDetected() const { return speechDetector.isSpeechDetected(); }
+    bool isEnergyDetected() const { return energyDetector.isEnergyDetected(); }
 
 private:
     SpeechDetector speechDetector;
+    EnergyDetector energyDetector;
     SpeechBalancer speechBalancer;
 
     void updateFilters();

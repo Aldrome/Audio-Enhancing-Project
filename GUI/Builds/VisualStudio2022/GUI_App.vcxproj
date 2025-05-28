@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\AudioRecorder.cpp"/>
     <ClCompile Include="..\..\Source\AutomaticGainControl.cpp"/>
+    <ClCompile Include="..\..\Source\EnergyDetector.cpp"/>
     <ClCompile Include="..\..\Source\SpeechBalancer.cpp"/>
     <ClCompile Include="..\..\Source\SpeechDetector.cpp"/>
     <ClCompile Include="..\..\Source\VolumeSlider.cpp"/>
@@ -2945,6 +2946,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\AudioRecorder.h"/>
     <ClInclude Include="..\..\Source\AutomaticGainControl.h"/>
+    <ClInclude Include="..\..\Source\EnergyDetector.h"/>
     <ClInclude Include="..\..\Source\SpeechBalancer.h"/>
     <ClInclude Include="..\..\Source\SpeechDetector.h"/>
     <ClInclude Include="..\..\Source\VolumeSlider.h"/>
