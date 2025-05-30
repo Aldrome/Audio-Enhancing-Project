@@ -2,7 +2,7 @@
 
 #include <JuceHeader.h>
 
-class FFTDisplay : public juce::Component, public juce::Timer
+class FFTDisplay : public juce::Component, private juce::Timer
 {
 public:
     FFTDisplay();
@@ -15,13 +15,16 @@ public:
 
 private:
     static constexpr int fftSize = 512;
-    static constexpr int widthSize = 512; // Number of time steps stored
+    static constexpr int widthSize = 512;
 
     juce::Image spectrogramImage;
-    int writeIndex = 0; // Circular buffer index
+    std::array<float, fftSize> fftData{};
+    int writeIndex = 0;
 
     void timerCallback() override;
-    int getBinIndex(float frequency, float sampleRate) const;
+    void drawSpectrogram(juce::Graphics& g);
+    void drawSpectrum(juce::Graphics& g);
+    void drawGrid(juce::Graphics& g);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FFTDisplay)
 };
