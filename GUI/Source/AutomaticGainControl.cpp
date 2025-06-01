@@ -7,6 +7,7 @@ void AutomaticGainControl::prepare(const juce::dsp::ProcessSpec& spec)
     juce::ignoreUnused(spec);
     currentGain = 1.0f;
     prepared = true;
+    lastLoudTime = juce::Time::getCurrentTime();  // Initialize time
 }
 
 void AutomaticGainControl::process(juce::dsp::AudioBlock<float>& block)
@@ -16,12 +17,32 @@ void AutomaticGainControl::process(juce::dsp::AudioBlock<float>& block)
 
     float rms = computeRMS(block);
 
-    if (rms > 0.0f)
-    {
-        float desiredGain = targetRMS / rms;
+    // Define threshold to detect "loud enough" signal
+    float detectionThreshold = 0.01f;  // adjust as needed
 
-        // Smooth gain adjustment
+    // Time management
+    juce::Time currentTime = juce::Time::getCurrentTime();
+    juce::RelativeTime elapsedSinceLoud = currentTime - lastLoudTime;
+
+    if (rms > detectionThreshold)
+    {
+        // Loud enough, update gain and record time
+        float desiredGain = targetRMS / rms;
         currentGain += (desiredGain - currentGain) * adjustmentSpeed;
+
+        lastLoudTime = currentTime;  // Reset hold timer
+    }
+    else
+    {
+        if (elapsedSinceLoud.inSeconds() < holdTimeSeconds)
+        {
+            // Hold the gain, no change
+        }
+        else
+        {
+            // Gradually release gain towards normal (1.0f)
+            currentGain += (1.0f - currentGain) * releaseSpeed;
+        }
     }
 
     block.multiplyBy(currentGain);
