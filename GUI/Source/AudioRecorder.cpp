@@ -90,6 +90,13 @@ void AudioRecorder::getNextAudioBlock(const juce::AudioSourceChannelInfo& buffer
             buffer[sample] *= volume.load();
         }
     }
+
+    const float* filteredData = bufferToFill.buffer->getReadPointer(0); // just channel 0
+    for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
+    {
+        pushNextSampleIntoFifo(filteredData[sample]);
+    }
+
 }
 
 
